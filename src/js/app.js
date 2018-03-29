@@ -1,6 +1,5 @@
 import React from 'react'
 import {BrowserRouter as Router, Route, NavLink, Switch} from 'react-router-dom'
-import '../sass/main.scss'
 
 const Home = () => <h1>Home</h1>;
 const One = () => <h1>One</h1>;
