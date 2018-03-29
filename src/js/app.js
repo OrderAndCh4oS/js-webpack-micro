@@ -15,15 +15,15 @@ const isActiveFunc = (match) => {
 
 const Links = () => (
     <nav>
-    <NavLink exact isActive={isActiveFunc} activeClassName="active" className="button" to="/">Home</NavLink>
-    <NavLink strict isActive={isActiveFunc} activeClassName="active" className="button" to="/one">One</NavLink>
-    <NavLink strict isActive={isActiveFunc} activeClassName="active" className="button" to="/two">Two</NavLink>
-    <NavLink strict isActive={isActiveFunc} activeClassName="active" className="button" to="/three/hello">??</NavLink>
-</nav>
+        <NavLink exact isActive={isActiveFunc} activeClassName="active" className="button" to="/">Home</NavLink>
+        <NavLink strict isActive={isActiveFunc} activeClassName="active" className="button" to="/one">One</NavLink>
+        <NavLink strict isActive={isActiveFunc} activeClassName="active" className="button" to="/two">Two</NavLink>
+        <NavLink strict isActive={isActiveFunc} activeClassName="active" className="button"
+                 to="/three/hello">??</NavLink>
+    </nav>
 );
 
 const App = () => {
-    console.log('main');
     return <div className="page-wrapper">
         <Router>
             <div className="page-content">
