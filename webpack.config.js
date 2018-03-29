@@ -22,13 +22,17 @@ let pathsToClean = [distDir];
 
 module.exports = {
     entry: {
-        app: srcDir+'/index.js'
+        app: srcDir + '/index.js'
     },
     output: {
         path: path.resolve(__dirname, distDir),
-        filename: '[name].[chunkhash].js'
+        filename: '[name].[hash].js'
     },
     devtool: "source-map", // any "source-map"-like devtool is possible
+    devServer: {
+        contentBase: './dist',
+        hot: true
+    },
     module: {
         rules: [
             {
@@ -73,28 +77,30 @@ module.exports = {
             }
         ]
     },
-    plugins: [
-        new CleanWebpackPlugin(pathsToClean, cleanOptions),
-        new ExtractTextPlugin("[name].[contenthash].css"),
-        new webpack.LoaderOptionsPlugin({
-            minimize: inProduction
-        }),
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-        }),
-        new HtmlWebpackPlugin({
-            template: srcDir + '/index.html'
-        }),
-        function () {
-            this.plugin('done', stats => {
-                require('fs').writeFileSync(
-                    path.join(__dirname, distDir + '/manifest.json'),
-                    JSON.stringify(stats.toJson().assetsByChunkName)
-                )
-            })
-        }
-    ]
+    plugins:
+        [
+            new webpack.NamedModulesPlugin(),
+            new webpack.HotModuleReplacementPlugin(),
+            new ExtractTextPlugin("[name].[contenthash].css"),
+            new webpack.LoaderOptionsPlugin({
+                minimize: inProduction
+            }),
+            new webpack.ProvidePlugin({
+                $: 'jquery',
+                jQuery: 'jquery',
+            }),
+            new HtmlWebpackPlugin({
+                template: srcDir + '/index.html'
+            }),
+            function () {
+                this.plugin('done', stats => {
+                    require('fs').writeFileSync(
+                        path.join(__dirname, distDir + '/manifest.json'),
+                        JSON.stringify(stats.toJson().assetsByChunkName)
+                    )
+                })
+            }
+        ]
 };
 
 if (inProduction) {
@@ -109,5 +115,8 @@ if (inProduction) {
                 whitelist: ['']
             }
         })
-    )
+    );
+    module.exports.plugins.push(
+        new CleanWebpackPlugin(pathsToClean, cleanOptions)
+    );
 }
