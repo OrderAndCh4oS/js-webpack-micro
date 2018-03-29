@@ -1,5 +1,6 @@
 import React from 'react'
-import {BrowserRouter as Router, Route, NavLink, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, NavLink, Route, Switch} from 'react-router-dom'
+import {hot} from 'react-hot-loader'
 
 const Home = () => <h1>Home</h1>;
 const One = () => <h1>One</h1>;
@@ -40,5 +41,5 @@ const App = () => {
     </div>
 };
 
-export default App
+export default hot(module)(App)
 
