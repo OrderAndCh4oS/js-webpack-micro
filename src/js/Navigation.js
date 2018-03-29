@@ -4,9 +4,7 @@ import {BrowserRouter as Router, NavLink, Route, Switch} from 'react-router-dom'
 const Home = () => <h1>Home</h1>;
 const One = () => <h1>One</h1>;
 const Two = () => <h1>Two</h1>;
-const Three = ({match}) => {
-    return <h1>{match.params.page}</h1>;
-};
+const Three = ({match}) => <h1>{match.params.page}</h1>;
 const PageNotFound = () => <h1>Page not found</h1>;
 
 const isActiveFunc = (match) => {

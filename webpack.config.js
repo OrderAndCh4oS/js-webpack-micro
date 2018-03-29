@@ -28,7 +28,7 @@ module.exports = {
         path: path.resolve(__dirname, distDir),
         filename: '[name].[hash].js'
     },
-    devtool: "source-map", // any "source-map"-like devtool is possible
+    devtool: "source-map",
     devServer: {
         contentBase: './dist',
         hot: true
