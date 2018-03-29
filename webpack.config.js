@@ -28,11 +28,6 @@ module.exports = {
         path: path.resolve(__dirname, distDir),
         filename: '[name].[chunkhash].js'
     },
-    resolve: {
-        alias: {
-            'vue$': 'vue/assets/vue.esm.js'
-        }
-    },
     devtool: "source-map", // any "source-map"-like devtool is possible
     module: {
         rules: [
