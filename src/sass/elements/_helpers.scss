@@ -1,0 +1,68 @@
+
+.accent {
+    color: $accent;
+}
+
+.text-color {
+    color: $text-color;
+}
+
+.margin-none {
+    margin-bottom: 0;
+}
+
+.no-pad-bottom {
+    padding-bottom: 0;
+}
+
+.no-pad {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.margin-right {
+    margin-right: $half-column-gutter;
+}
+
+.margin-bottom {
+    margin-bottom: $column-gutter;
+}
+
+.spacer {
+    height: 30vh;
+}
+
+.bc-transparent {
+    background-color: transparent;
+}
+
+.panel {
+    border: $border;
+    border-radius: 4px;
+}
+
+.panel-padding {
+    padding: $half-column-gutter;
+}
+
+.negative {
+    color: $error-color;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}

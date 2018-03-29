@@ -1,0 +1,97 @@
+a.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    background: $button-bk-color; /* Old browsers */
+    border: $button-border;
+    color: $button-color;
+    display: inline-block;
+    font-weight: $font-weight-bold;
+    text-decoration: none;
+    cursor: pointer;
+    line-height: $base-line-height;
+    padding: $button-padding;
+    font-family: $base-font-family;
+}
+
+a.button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover {
+    color: $button-color-hover;
+    background: $button-bk-color-hover; /* Old browsers */
+    border: $button-border-hover;
+}
+
+a.button:active,
+button:active,
+input[type="submit"]:active,
+input[type="reset"]:active,
+input[type="button"]:active {
+    background: $button-bk-color-hover; /* Old browsers */
+    border: $button-border-hover;
+}
+
+a.button.full-width,
+button.full-width,
+input[type="submit"].full-width,
+input[type="reset"].full-width,
+input[type="button"].full-width {
+    width: 100%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    text-align: center;
+}
+
+a.button.disabled,
+button.disabled,
+button:disabled,
+input[type="submit"].disabled,
+input[type="reset"].disabled,
+input[type="button"].disabled {
+    cursor: default;
+    border: $button-border-disabled;
+    color: $button-color-disabled;
+    &:hover, &:active {
+        background-color: $white;
+    }
+}
+
+a.button.destructive,
+button.destructive,
+input[type="submit"].destructive,
+input[type="reset"].destructive,
+input[type="button"].destructive {
+    border-color: $error-color;
+    background-color: $white;
+    color: $error-color;
+    &:hover {
+        border-color: $error-color;
+        background-color: $error-color;
+        color: $white;
+    }
+}
+
+a.button.affirmative,
+button.affirmative,
+input[type="submit"].affirmative,
+input[type="reset"].affirmative,
+input[type="button"].affirmative {
+    border-color: $valid-color;
+    background-color: $white;
+    color: $valid-color;
+    &:hover {
+        border-color: $valid-color;
+        background-color: $valid-color;
+        color: $white;
+    }
+}
+
+/* Fix for odd Mozilla border & padding issues */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}

@@ -1,0 +1,42 @@
+{
+  "name": "webpack-setup",
+  "version": "0.1.0",
+  "description": "Initial webpack configured for SASS and Image Compression",
+  "author": "Sean Cooper <sean@orderandchaoscreative.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "set NODE_ENV=development&& webpack --config webpack.config.js",
+    "prod": "set NODE_ENV=production&& webpack --config webpack.config.js && cp src/.htaccess dist/.htaccess",
+    "watch": "npm run dev -- --watch"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "clean-webpack-plugin": "^0.1.17",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.5",
+    "glob": "^7.1.2",
+    "html-webpack-plugin": "^3.1.0",
+    "img-loader": "^2.0.0",
+    "install": "^0.11.0",
+    "modularscale-sass": "^3.0.5",
+    "node-sass": "^4.5.3",
+    "process": "^0.11.10",
+    "purify-css": "^1.2.6",
+    "purifycss-webpack": "^0.7.0",
+    "sass-loader": "^6.0.6",
+    "source-map": "^0.7.2",
+    "style-loader": "^0.20.3",
+    "webpack": "^3.0.0"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "picturefill": "^3.0.2",
+    "smoothscroll-polyfill": "^0.4.0"
+  },
+  "main": "assets/js/main.js",
+  "repository": "git@bitbucket.org:Sarkoma/webpack-setup.git"
+}
