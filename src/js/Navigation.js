@@ -1,6 +1,5 @@
 import React from 'react'
 import {BrowserRouter as Router, NavLink, Route, Switch} from 'react-router-dom'
-import {hot} from 'react-hot-loader'
 
 const Home = () => <h1>Home</h1>;
 const One = () => <h1>One</h1>;
@@ -24,22 +23,19 @@ const Links = () => (
     </nav>
 );
 
-const App = () => {
-    return <div className="page-wrapper">
-        <Router>
-            <div className="page-content">
-                <Links/>
-                <Switch>
-                    <Route exact path="/" component={Home}/>
-                    <Route strict path="/one" component={One}/>
-                    <Route strict path="/two" component={Two}/>
-                    <Route strict path="/three/:page" component={Three}/>
-                    <Route strict component={PageNotFound}/>
-                </Switch>
-            </div>
-        </Router>
-    </div>
-};
+const Navigation = () => (
+    <Router>
+        <div className="page-content">
+            <Links/>
+            <Switch>
+                <Route exact path="/" component={Home}/>
+                <Route strict path="/one" component={One}/>
+                <Route strict path="/two" component={Two}/>
+                <Route strict path="/three/:page" component={Three}/>
+                <Route strict component={PageNotFound}/>
+            </Switch>
+        </div>
+    </Router>
+);
 
-export default hot(module)(App)
-
+export default Navigation;
