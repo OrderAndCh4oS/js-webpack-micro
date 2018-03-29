@@ -23,9 +23,6 @@
 * Drop Shadow Settings
 */
 /**
-* Cookie Bar Settings
-*/
-/**
 * Selection Settings
 */
 /**
@@ -53,12 +50,12 @@ body {
   margin: 0; }
 
 ::-moz-selection {
-  background: #e9572e;
+  background: #808080;
   color: #fcfcfc;
   text-shadow: none; }
 
 ::selection {
-  background: #e9572e;
+  background: #808080;
   color: #fcfcfc;
   text-shadow: none; }
 
@@ -547,7 +544,7 @@ h1, h2, h3, h4, h5, h6, .header-one {
 h1, .header-one {
   font-size: 1.62234rem; }
   h1 a, .header-one a {
-    color: #e9572e; }
+    color: #808080; }
     h1 a:hover, .header-one a:hover {
       color: #414141; }
 
@@ -569,7 +566,7 @@ p {
   font-family: "Quire Sans W04", Verdana, Helvetica, Arial, sans; }
 
 a, a:visited {
-  color: #e9572e;
+  color: #808080;
   font-weight: 400;
   outline: 0;
   text-decoration: none; }
@@ -600,7 +597,7 @@ i, em {
 blockquote {
   margin: 0 0 1.4rem;
   padding: 0 1.4rem;
-  border-left: 3px solid #e9572e; }
+  border-left: 3px solid #808080; }
 
 blockquote p:first-of-type:before {
   content: "\201C"; }
@@ -731,7 +728,7 @@ input[type="date"]:focus,
 input[type="time"]:focus,
 input[type="color"]:focus,
 textarea:focus {
-  border: 1px solid #e9572e;
+  border: 1px solid #808080;
   color: #b3b3b3; }
 
 textarea, #cke_content {
@@ -778,9 +775,9 @@ button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
-  background: #e9572e;
+  background: #808080;
   /* Old browsers */
-  border: 1px solid #e9572e;
+  border: 1px solid #808080;
   color: #fcfcfc;
   display: inline-block;
   font-weight: 700;
@@ -949,7 +946,7 @@ input::-moz-focus-inner {
   padding: 1.4rem 2.8rem; }
 
 .accent {
-  color: #e9572e; }
+  color: #808080; }
 
 .text-color {
   color: #332f2f; }
@@ -1000,4 +997,4 @@ input::-moz-focus-inner {
 .clearfix {
   *zoom: 1; }
 
-/*# sourceMappingURL=main.bb1ad0108bd720e0782e47ab5809f0b9.css.map*/
+/*# sourceMappingURL=app.002567d8c94b9b91e430a39102d207a8.css.map*/

@@ -22,7 +22,7 @@ let pathsToClean = [distDir];
 
 module.exports = {
     entry: {
-        main: srcDir+'/js/main.js'
+        app: srcDir+'/index.js'
     },
     output: {
         path: path.resolve(__dirname, distDir),
@@ -32,7 +32,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
                 loader: "babel-loader"
             },
@@ -106,7 +106,7 @@ if (inProduction) {
             paths: glob.sync(path.join(__dirname, './' + srcDir + '**/*' + mainExt)),
             minimize: inProduction,
             purifyOptions: {
-                whitelist: ['*box*', '*list*', '*input*', '*textarea*', '*select*', '*slide*']
+                whitelist: ['']
             }
         })
     )
