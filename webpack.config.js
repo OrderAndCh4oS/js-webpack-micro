@@ -85,10 +85,6 @@ module.exports = {
             new webpack.LoaderOptionsPlugin({
                 minimize: inProduction
             }),
-            new webpack.ProvidePlugin({
-                $: 'jquery',
-                jQuery: 'jquery',
-            }),
             new HtmlWebpackPlugin({
                 template: srcDir + '/index.html'
             }),

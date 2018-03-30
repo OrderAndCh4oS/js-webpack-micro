@@ -37,12 +37,9 @@
     "babel-preset-react": "^6.24.1"
   },
   "dependencies": {
-    "jquery": "^3.2.1",
-    "picturefill": "^3.0.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-router-dom": "^4.2.2",
-    "smoothscroll-polyfill": "^0.4.0"
+    "react-router-dom": "^4.2.2"
   },
   "main": "assets/js/main.js",
   "repository": "git@bitbucket.org:Sarkoma/webpack-setup.git"
