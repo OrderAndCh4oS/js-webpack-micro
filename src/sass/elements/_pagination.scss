@@ -2,15 +2,14 @@
     margin-bottom: $half-column-gutter;
     span {
         a {
-            @extend a.button;
+            @extend .button;
             color: $button-color;
         }
         &.current {
-            @extend a.button:hover;
+            @extend .button:hover;
             padding: $button-padding;
             display: inline-block;
             cursor: default;
-            border-radius: remCalc(4);
         }
         &.disabled {
             display: none;
