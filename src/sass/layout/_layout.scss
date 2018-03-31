@@ -1,6 +1,6 @@
 .page-wrapper {
-    min-height: 100%;
-    padding: $column-gutter $column-gutter*2;
+  min-height: 100%;
+  padding: $column-gutter*3 $column-gutter*2;
 }
 
 @media #{$small-up} {
@@ -12,6 +12,7 @@
 }
 
 @media #{$large-up} {
+
 }
 
 @media #{$xlarge-up} {
