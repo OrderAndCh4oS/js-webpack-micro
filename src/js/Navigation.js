@@ -1,9 +1,9 @@
 import React from 'react'
 import {BrowserRouter as Router, NavLink, Route, Switch} from 'react-router-dom'
 
-const page = ({title, content}) =>
+const column = ({title, content, span}) =>
     <div className="row">
-        <div className="column col-12">
+        <div className={"column " + span}>
             <div>
                 <h1>{title}</h1>
                 <p>{content}</p>
@@ -12,10 +12,10 @@ const page = ({title, content}) =>
     </div>
 ;
 
-const Home = () => page({title: 'Home', content: 'Intro here'});
-const One = () => page({title: 'One', content: 'Intro here'});
-const Two = () => page({title: 'Two', content: 'Intro here'});
-const Three = ({match}) => page({title: match.params.page, content: 'Intro here'});
+const Home = () => column({title: 'Home', content: 'Intro here', span: 'col-12'});
+const One = () => column({title: 'One', content: 'Intro here', span: 'col-12'});
+const Two = () => column({title: 'Two', content: 'Intro here', span: 'col-12'});
+const Three = ({match}) => column({title: match.params.page, content: 'Intro here', span: 'col-12'});
 const PageNotFound = () => <h1>Page not found</h1>;
 
 const isActiveFunc = (match) => {
