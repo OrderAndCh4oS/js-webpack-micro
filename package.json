@@ -1,7 +1,7 @@
 {
-  "name": "webpack-setup",
+  "name": "oacc-webpack-setup",
   "version": "0.1.0",
-  "description": "Initial webpack configured for SASS and Image Compression",
+  "description": "Initial webpack config: Babel, React + base SASS",
   "author": "Sean Cooper <sean@orderandchaoscreative.com>",
   "license": "MIT",
   "scripts": {
@@ -41,6 +41,6 @@
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2"
   },
-  "main": "assets/js/main.js",
+  "main": "src/index.js",
   "repository": "git@bitbucket.org:Sarkoma/webpack-setup.git"
 }
