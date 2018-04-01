@@ -1,22 +1,41 @@
 import React from 'react'
 import {BrowserRouter as Router, NavLink, Route, Switch} from 'react-router-dom'
 
-const column = ({title, content, span}) =>
+const Container = ({classes = [], children}) =>
+    <div className={"container " + classes.join(" ")}>{children}</div>;
+
+const Row = ({children}) => <div className={"row"}>{children}</div>;
+
+const Column = ({span, children}) =>
     <div className="row">
         <div className={"column " + span}>
             <div>
-                <h1>{title}</h1>
-                <p>{content}</p>
+                {children}
             </div>
         </div>
     </div>
 ;
 
-const Home = () => column({title: 'Home', content: 'Intro here', span: 'col-12'});
-const One = () => column({title: 'One', content: 'Intro here', span: 'col-12'});
-const Two = () => column({title: 'Two', content: 'Intro here', span: 'col-12'});
-const Three = ({match}) => column({title: match.params.page, content: 'Intro here', span: 'col-12'});
-const PageNotFound = () => <h1>Page not found</h1>;
+const Home = () =>
+    <Column span={'col-12'}>
+        <div><h1>Home</h1><p>Intro here</p></div>
+    </Column>;
+const One = () =>
+    <Column span={'col-12'}>
+        <div><h1>One</h1><p>Intro here</p></div>
+    </Column>;
+const Two = () =>
+    <Column span={'col-12'}>
+        <div><h1>Two</h1><p>Intro here</p></div>
+    </Column>;
+const Three = ({match}) =>
+    <Column span={'col-12'}>
+        <div><h1>{match.params.page}</h1><p>Intro here</p></div>
+    </Column>;
+const PageNotFound = () =>
+    <Column span={'col-12'}>
+        <div><h1>Page not found</h1><p>Intro here</p></div>
+    </Column>;
 
 const isActiveFunc = (match) => {
     return match;
@@ -35,14 +54,14 @@ const Links = () => (
 const Navigation = () => (
     <Router>
         <div className="page-content">
-            <div className="container">
-                <div className="row">
-                    <div className="column col-12">
+            <Container>
+                <Row>
+                    <Column span="col-12">
                         <Links/>
-                    </div>
-                </div>
-            </div>
-            <div className="container">
+                    </Column>
+                </Row>
+            </Container>
+            <Container>
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route strict path="/one" component={One}/>
@@ -50,7 +69,7 @@ const Navigation = () => (
                     <Route strict path="/three/:page" component={Three}/>
                     <Route strict component={PageNotFound}/>
                 </Switch>
-            </div>
+            </Container>
         </div>
     </Router>
 );
