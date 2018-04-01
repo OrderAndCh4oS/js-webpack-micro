@@ -9,11 +9,11 @@ $base-font-size: 16px;
 $base-line-height: 1.4;
 $em-base: $base-font-size !default;
 
-$wrapper-width: 1024;
-$column-gutter: remCalc($base-font-size*$base-line-height);
+$wrapper-width: 1920;
+$column-gutter: remCalc($base-font-size + 4);
 $half-column-gutter: $column-gutter / 2;
 
-$ms-base: $base-font-size 42;
+$ms-base: $base-font-size 20;
 $ms-ratio: $golden;
 
 $white: #fcfcfc;

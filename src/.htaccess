@@ -835,4 +835,14 @@ FileETag None
 #     RewriteCond %{REQUEST_FILENAME} !-f
 #     RewriteRule ^(.+)\.(\d+)\.(bmp|css|cur|gif|ico|jpe?g|m?js|png|svgz?|webp|webmanifest)$ $1.$3 [L]
 # </IfModule>
-s
+
+
+# ----------------------------------------------------------------------
+# | Redirect all to index.html                                         |
+# ----------------------------------------------------------------------
+
+# RewriteEngine On
+# RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+# RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+# RewriteRule ^ - [L]
+# RewriteRule ^ /index.html [L]

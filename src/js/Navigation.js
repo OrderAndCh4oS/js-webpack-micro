@@ -3,9 +3,7 @@ import {BrowserRouter as Router, NavLink, Route, Switch} from 'react-router-dom'
 
 const Container = ({classes = [], children}) =>
     <div className={"container " + classes.join(" ")}>{children}</div>;
-
 const Row = ({children}) => <div className={"row"}>{children}</div>;
-
 const Column = ({span, children}) =>
     <div className="row">
         <div className={"column " + span}>
@@ -16,25 +14,60 @@ const Column = ({span, children}) =>
     </div>
 ;
 
+const Title = ({tag = "h1", classes = [], children}) => {
+    {
+        const HeadingTag = `${tag}`;
+        return (<HeadingTag className={"title " + classes.join(" ")}>{children}</HeadingTag>);
+    }
+};
+const Pretitle = ({classes = [], children}) => <p className={"pretitle " + classes.join(" ")}>{children}</p>;
+const IntroText = ({classes = [], children}) => <p className={"intro-text " + classes.join(" ")}>{children}</p>;
+const Text = ({classes = [], children}) => <p className={"text " + classes.join(" ")}>{children}</p>;
+
 const Home = () =>
     <Column span={'col-12'}>
-        <div><h1>Home</h1><p>Intro here</p></div>
+        <div>
+            <Pretitle>Welcome to</Pretitle>
+            <Title>Home</Title>
+            <IntroText>Intro here</IntroText>
+            <Text>Main text here</Text>
+        </div>
+        ;
     </Column>;
 const One = () =>
     <Column span={'col-12'}>
-        <div><h1>One</h1><p>Intro here</p></div>
+        <div>
+            <Pretitle>Welcome to</Pretitle>
+            <Title>One</Title>
+            <IntroText>Intro here</IntroText>
+            <Text>Main text here</Text>
+        </div>
     </Column>;
 const Two = () =>
     <Column span={'col-12'}>
-        <div><h1>Two</h1><p>Intro here</p></div>
+        <div>
+            <Pretitle>Welcome to</Pretitle>
+            <Title>Two</Title>
+            <IntroText>Intro here</IntroText>
+            <Text>Main text here</Text>
+        </div>
     </Column>;
 const Three = ({match}) =>
     <Column span={'col-12'}>
-        <div><h1>{match.params.page}</h1><p>Intro here</p></div>
+        <div>
+            <Pretitle>Welcome to</Pretitle>
+            <Title>{match.params.page}</Title>
+            <IntroText>Intro here</IntroText>
+            <Text>Main text here</Text>
+        </div>
     </Column>;
 const PageNotFound = () =>
     <Column span={'col-12'}>
-        <div><h1>Page not found</h1><p>Intro here</p></div>
+        <div>
+            <Pretitle>Sorry</Pretitle>
+            <Title>Page not found</Title>
+            <Text>Intro here</Text>
+        </div>
     </Column>;
 
 const isActiveFunc = (match) => {
@@ -67,7 +100,7 @@ const Navigation = () => (
                     <Route strict path="/one" component={One}/>
                     <Route strict path="/two" component={Two}/>
                     <Route strict path="/three/:page" component={Three}/>
-                    <Route strict component={PageNotFound}/>
+                    <Route component={PageNotFound}/>
                 </Switch>
             </Container>
         </div>

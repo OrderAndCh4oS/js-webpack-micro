@@ -10,7 +10,7 @@ h1, h2, h3, h4, h5, h6, .header-one {
 }
 
 h1, .header-one {
-    font-size: $font-four;
+    font-size: $font-six;
     a {
         color: $accent;
         &:hover {
@@ -20,7 +20,7 @@ h1, .header-one {
 }
 
 h2, .header-two {
-    font-size: $font-two;
+    font-size: $font-four;
     margin-bottom: $half-column-gutter;
 }
 
@@ -33,11 +33,20 @@ h4, h5, h6 {
     font-size: $font-one;
 }
 
+.pretitle {
+    font-size: $font-two;
+    margin-bottom: 0;
+}
+
 p {
     color: $text-color;
     font-size: $font-one;
     font-weight: $font-weight-regular;
     font-family: $base-font-family;
+}
+
+.intro-text {
+    font-size: $font-two;
 }
 
 a, a:visited {
