@@ -33,9 +33,11 @@ const isActiveFunc = (match) => {
 
 const Links = () => (
     <nav className="main-nav">
-        <NavLink exact isActive={isActiveFunc} activeClassName="active" className="button" to="/">Home</NavLink>
-        <NavLink strict isActive={isActiveFunc} activeClassName="active" className="button" to="/one">One</NavLink>
-        <NavLink strict isActive={isActiveFunc} activeClassName="active" className="button" to="/two">Two</NavLink>
+        <NavLink exact isActive={isActiveFunc} activeClassName="active" to="/">Home</NavLink>
+        {' '}
+        <NavLink strict isActive={isActiveFunc} activeClassName="active" to="/one">One</NavLink>
+        {' '}
+        <NavLink strict isActive={isActiveFunc} activeClassName="active" to="/two">Two</NavLink>
     </nav>
 );
 
