@@ -1,6 +1,6 @@
 import React from 'react'
-import {Column} from "../structure";
-import {IntroText, Pretitle, Text, Title} from "../typography";
+import {Column} from "../components/structure";
+import {IntroText, Pretitle, Text, Title} from "../components/typography";
 
 const Page = ({pretitle, title, text, introText}) =>
     <Column span={'col-12'}>

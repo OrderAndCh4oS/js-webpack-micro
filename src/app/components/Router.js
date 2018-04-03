@@ -1,8 +1,8 @@
 import React from 'react'
 import {NavLink, Route, RouteHandler, Switch} from 'react-router-dom'
 import {Column, Container, Row} from "./structure";
-import Page from "./pages/Page";
-import PageNotFound from "./pages/PageNotFound";
+import Page from "../pages/Page";
+import PageNotFound from "../pages/PageNotFound";
 
 const homeState = {
     pretitle: "Welcome to",
