@@ -89,7 +89,7 @@ module.exports = {
         [
             new webpack.NamedModulesPlugin(),
             new webpack.HotModuleReplacementPlugin(),
-            new ExtractTextPlugin("[name].[contenthash].css"),
+            new ExtractTextPlugin("[name].[hash].css"),
             new webpack.LoaderOptionsPlugin({
                 minimize: inProduction
             }),
