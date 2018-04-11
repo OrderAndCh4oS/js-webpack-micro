@@ -1,6 +1,6 @@
-import React from 'react'
-import {Pretitle, Text, Title} from "../components/typography";
-import {Column} from "../components/structure";
+import React from 'react';
+import {Pretitle, Text, Title} from '../components/typography';
+import {Column} from '../components/structure';
 
 const PageNotFound = () =>
     <Column span={'col-12'}>

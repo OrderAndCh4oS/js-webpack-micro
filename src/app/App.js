@@ -1,6 +1,6 @@
-import React from 'react'
-import Router from "./components/Router";
-import {hot} from 'react-hot-loader'
+import React from 'react';
+import Router from './components/Router';
+import {hot} from 'react-hot-loader';
 
 const App = () => (
     <div className="page-wrapper">
@@ -8,4 +8,5 @@ const App = () => (
     </div>
 );
 
-export default hot(module)(App)
+// eslint-disable-next-line
+export default hot(module)(App);
