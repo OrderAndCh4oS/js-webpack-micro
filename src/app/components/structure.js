@@ -18,7 +18,7 @@ Row.propTypes = {
 
 export const Column = ({span, children}) =>
     <div className="row">
-        <div className={'column ' + span}>
+        <div className={'column ' + 'col-' + span}>
             <div>
                 {children}
             </div>

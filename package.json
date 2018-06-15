@@ -28,7 +28,7 @@
     "imagemin": "^5.3.1",
     "install": "^0.11.0",
     "modularscale-sass": "^3.0.5",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.9.0",
     "process": "^0.11.10",
     "prop-types": "^15.6.1",
     "purify-css": "^1.2.6",

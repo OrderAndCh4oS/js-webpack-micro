@@ -45,7 +45,7 @@ const Router = () => (
     <div className="page-content">
         <Container>
             <Row>
-                <Column span="col-12">
+                <Column span={12}>
                     <Links/>
                 </Column>
             </Row>

@@ -4,7 +4,7 @@ import {IntroText, Pretitle, Text, Title} from '../components/typography';
 import PropTypes from 'prop-types';
 
 const Page = ({pretitle, title, introText, text}) =>
-    <Column span={'col-12'}>
+    <Column span={12}>
         <div>
             <Pretitle>{pretitle}</Pretitle>
             <Title>{title}</Title>
