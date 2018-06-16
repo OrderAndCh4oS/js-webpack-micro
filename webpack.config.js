@@ -28,7 +28,7 @@ module.exports = {
         path: path.resolve(__dirname, distDir),
         filename: '[name].[hash].js'
     },
-    devtool: "source-map",
+    devtool: 'source-map',
     devServer: {
         contentBase: './dist',
         hot: true,
@@ -38,15 +38,15 @@ module.exports = {
     module: {
         rules: [
             {
-                enforce: "pre",
+                enforce: 'pre',
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loader: "eslint-loader",
+                loader: 'eslint-loader',
             },
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loader: "babel-loader"
+                loader: 'babel-loader'
             },
             {
                 test: /\.s[ac]ss$/,
@@ -55,16 +55,18 @@ module.exports = {
                         {
                             loader: 'css-loader',
                             options: {
-                                sourceMap: true
+                                sourceMap: true,
+                                disable: inProduction,
                             }
                         },
                         {
                             loader: 'sass-loader',
                             options: {
-                                sourceMap: true
+                                sourceMap: true,
+                                disable: inProduction,
                             }
                         }],
-                    fallback: "style-loader"
+                    fallback: 'style-loader'
                 })
             },
             {
@@ -89,7 +91,11 @@ module.exports = {
         [
             new webpack.NamedModulesPlugin(),
             new webpack.HotModuleReplacementPlugin(),
-            new ExtractTextPlugin("[name].[hash].css"),
+            new ExtractTextPlugin({
+                filename: 'styles.css',
+                allChunks: true,
+                disable: true
+            }),
             new webpack.LoaderOptionsPlugin({
                 minimize: inProduction
             }),
@@ -101,8 +107,8 @@ module.exports = {
                     require('fs').writeFileSync(
                         path.join(__dirname, distDir + '/manifest.json'),
                         JSON.stringify(stats.toJson().assetsByChunkName)
-                    )
-                })
+                    );
+                });
             }
         ]
 };
