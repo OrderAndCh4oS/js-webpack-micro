@@ -27,7 +27,6 @@ class Page extends Component {
 
     render() {
         const {page, errorMessage, isFetching} = this.props;
-        console.log(page, isFetching);
         if (isFetching && !page.length) {
             return <p>Loading...</p>;
         }
@@ -47,8 +46,6 @@ class Page extends Component {
 
 const mapStateToPageProps = (state, {match}) => {
     const pageName = match.params.page || 'home';
-    console.log(pageName);
-    console.log(state.app[pageName]);
     return {
         page: page.getPage(state.app[pageName], pageName),
         isFetching: page.isFetching(state.app[pageName], pageName),
