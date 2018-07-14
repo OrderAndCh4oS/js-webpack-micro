@@ -436,7 +436,7 @@ AddDefaultCharset utf-8
 # If a user types `example.com` in their browser, even if the server
 # redirects them to the secure version of the website, that still leaves
 # a window of opportunity (the initial HTTP connection) for an attacker
-# to downgrade or redirect the request.
+# to downgrade or redirect the requestStatuses.
 #
 # The following header ensures that browser will ONLY connect to your
 # server via HTTPS, regardless of what the users type in the browser's
@@ -584,7 +584,7 @@ ServerSignature Off
 
 <IfModule mod_deflate.c>
 
-    # Force compression for mangled `Accept-Encoding` request headers
+    # Force compression for mangled `Accept-Encoding` requestStatuses headers
     # https://developer.yahoo.com/blogs/ydn/pushing-beyond-gzipping-25601.html
 
     <IfModule mod_setenvif.c>

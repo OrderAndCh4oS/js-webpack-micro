@@ -1,11 +1,19 @@
-/* eslint-disable indent */
-const index = (state, action) => {
-    switch (action) {
-        case 'AN_ACTION':
-            return state;
-        default:
-            return state;
-    }
-};
+import {combineReducers} from 'redux';
+import {reducer as formReducer} from 'redux-form';
+import createPage from './page';
 
-export default index;
+const app = combineReducers({
+    home: createPage('home'),
+    one: createPage('one'),
+    two: createPage('two')
+});
+
+const rootReducer = combineReducers({
+    app,
+    form: formReducer
+});
+
+console.log(rootReducer);
+
+export default rootReducer;
+

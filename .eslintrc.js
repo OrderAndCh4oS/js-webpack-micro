@@ -15,9 +15,15 @@ module.exports = {
         "react"
     ],
     "rules": {
-        "indent": [
-            "error",
-            4
+        'no-class-assign': 2,
+        'indent': [
+            'error',
+            4,
+            {
+                'SwitchCase': 1,
+                'FunctionDeclaration': {'body': 1, 'parameters': 2},
+                'ignoredNodes': ['JSXAttribute', 'JSXSpreadAttribute']
+            }
         ],
         "linebreak-style": [
             "error",
@@ -30,6 +36,7 @@ module.exports = {
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        'no-console': 0
     }
 };
