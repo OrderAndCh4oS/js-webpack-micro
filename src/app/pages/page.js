@@ -47,9 +47,9 @@ class Page extends Component {
 const mapStateToPageProps = (state, {match}) => {
     const pageName = match.params.page || 'home';
     return {
-        page: page.getPage(state.app[pageName], pageName),
-        isFetching: page.isFetching(state.app[pageName], pageName),
-        errorMessage: page.errorMessage(state.app[pageName], pageName),
+        page: page.getPage(state.app[pageName]),
+        isFetching: page.isFetching(state.app[pageName]),
+        errorMessage: page.errorMessage(state.app[pageName]),
         pageName: pageName
     };
 };

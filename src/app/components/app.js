@@ -1,8 +1,7 @@
 import React from 'react';
 import {NavLink, Route, Switch} from 'react-router-dom';
 import {Column, Container, Row} from './structure';
-import CurrentPage from '../pages/Page';
-import PageNotFound from '../pages/PageNotFound';
+import CurrentPage from '../pages/page';
 
 const isActiveFunc = (match) => {
     return match;
@@ -23,7 +22,7 @@ const App = () => (
         <div className="page-content">
             <Container>
                 <Row>
-                    <Column span="col-12">
+                    <Column>
                         <Links/>
                     </Column>
                 </Row>
@@ -31,7 +30,6 @@ const App = () => (
             <Container>
                 <Switch>
                     <Route exact path="/:page?" component={CurrentPage}/>
-                    <Route component={PageNotFound}/>
                 </Switch>
             </Container>
         </div>

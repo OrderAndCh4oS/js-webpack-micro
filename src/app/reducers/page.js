@@ -17,13 +17,13 @@ const createPage = (pageName) => {
         success: types.PAGE_SUCCESS,
         failure: types.PAGE_FAILURE
     };
-    const pageRequest = requestStatuses(undefined, requestTypes);
+    const requestStatus = requestStatuses(undefined, requestTypes);
 
-    return combineReducers({page, pageRequest});
+    return combineReducers({page, requestStatus});
 };
 
 export default createPage;
 
 export const getPage = (state) => state.page;
-export const isFetching = (state) => state.pageRequest.isFetching;
-export const errorMessage = (state) => state.pageRequest.errorMessage;
+export const isFetching = (state) => state.requestStatus.isFetching;
+export const errorMessage = (state) => state.requestStatus.errorMessage;
