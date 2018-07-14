@@ -41,24 +41,26 @@ const Links = () => (
     </nav>
 );
 
-const Router = () => (
-    <div className="page-content">
-        <Container>
-            <Row>
-                <Column span="col-12">
-                    <Links/>
-                </Column>
-            </Row>
-        </Container>
-        <Container>
-            <Switch>
-                <Route exact path="/" component={Home}/>
-                <Route strict path="/one" component={One}/>
-                <Route strict path="/two" component={Two}/>
-                <Route component={PageNotFound}/>
-            </Switch>
-        </Container>
+const App = () => (
+    <div className="page-wrapper">
+        <div className="page-content">
+            <Container>
+                <Row>
+                    <Column span="col-12">
+                        <Links/>
+                    </Column>
+                </Row>
+            </Container>
+            <Container>
+                <Switch>
+                    <Route exact path="/" component={Home}/>
+                    <Route strict path="/one" component={One}/>
+                    <Route strict path="/two" component={Two}/>
+                    <Route component={PageNotFound}/>
+                </Switch>
+            </Container>
+        </div>
     </div>
 );
 
-export default Router;
+export default App;

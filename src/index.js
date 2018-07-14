@@ -1,17 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter} from 'react-router-dom';
-import App from './app/App.js';
+
+import Root from './app/components/root';
+import configureStore from './configureStore';
+
 import './sass/main.scss';
 
+const store = configureStore();
 
-const render = () => {
-    ReactDOM.render(
-        <BrowserRouter>
-            <App/>
-        </BrowserRouter>,
-        document.getElementById('root')
-    );
-};
-
-render();
+ReactDOM.render(
+    <Root store={store}/>,
+    document.getElementById('root')
+);
