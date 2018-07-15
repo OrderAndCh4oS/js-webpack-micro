@@ -19,7 +19,7 @@ const requestStatuses = (check, {request, success, failure, invalid = null}) => 
     const invalidRequest = (state = null, action) => {
         switch (action.type) {
             case invalid:
-                return action.data;
+                return action.message;
             case request:
             case success:
             case failure:

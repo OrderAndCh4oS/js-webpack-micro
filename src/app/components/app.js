@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink, Route, Switch} from 'react-router-dom';
 import {Column, Container, Row} from './structure';
-import CurrentPage from '../pages/page';
+import CurrentPage from './page';
 
 const isActiveFunc = (match) => {
     return match;

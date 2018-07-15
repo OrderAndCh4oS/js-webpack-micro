@@ -3,11 +3,12 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import * as actions from '../actions';
-import * as app from '../reducers';
+import * as actions from '../actions/index';
+import * as app from '../reducers/index';
 
-import {Column} from '../components/structure';
-import {IntroText, Pretitle, Text, Title} from '../components/typography';
+import {Column} from './structure';
+import {IntroText, Pretitle, Text, Title} from './typography';
+import ErrorMessage from './error-message';
 
 class Page extends Component {
     componentDidMount() {
@@ -26,12 +27,18 @@ class Page extends Component {
     }
 
     render() {
-        const {page, errorMessage, isFetching} = this.props;
+        const {page, isFetching, isInvalid, errorMessage} = this.props;
         if (isFetching && !page.length) {
             return <p>Loading...</p>;
         }
         if (errorMessage && !page.length) {
-            return <p>{errorMessage}</p>;
+            return <ErrorMessage><Text>{errorMessage}</Text></ErrorMessage>;
+        }
+        console.log(isInvalid && !page.length);
+
+        if (isInvalid && !page.length) {
+            console.log('hallo');
+            return <ErrorMessage title="404 Error"><Text>{isInvalid}</Text></ErrorMessage>;
         }
         return (
             <Column span={12}>
@@ -49,6 +56,7 @@ const mapStateToPageProps = (state, {match}) => {
     return {
         page: app.getPage(state.app),
         isFetching: app.isFetching(state.app),
+        isInvalid: app.invalidRequest(state.app),
         errorMessage: app.errorMessage(state.app),
         pageName: pageName
     };

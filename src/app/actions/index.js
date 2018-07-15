@@ -11,19 +11,28 @@ const fetchPage = (page) => (dispatch, getState) => {
         page
     });
     return api.fetchPage(page).then(
-        data => dispatch({
-            type: types.PAGE_SUCCESS,
-            page,
-            response: data
-        }),
+        response => {
+            if (!response.error) {
+                dispatch({
+                    type: types.PAGE_SUCCESS,
+                    page,
+                    response
+                });
+            } else {
+                dispatch({
+                    type: types.PAGE_INVALID,
+                    page,
+                    message: response.error
+                });
+            }
+        },
         error => {
             dispatch({
                 type: types.PAGE_FAILURE,
                 page,
                 message: error.message || 'Something went wrong'
             });
-        }
-    );
+        });
 };
 
 export {fetchPage};

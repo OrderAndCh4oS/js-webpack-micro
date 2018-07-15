@@ -15,6 +15,7 @@ const page = (state = {}, action) => {
 const requestTypes = {
     request: types.PAGE_REQUEST,
     success: types.PAGE_SUCCESS,
+    invalid: types.PAGE_INVALID,
     failure: types.PAGE_FAILURE
 };
 const requestStatus = requestStatuses(undefined, requestTypes);
@@ -33,4 +34,5 @@ export default rootReducer;
 
 export const getPage = (state) => state.page;
 export const isFetching = (state) => state.requestStatus.isFetching;
+export const invalidRequest = (state) => state.requestStatus.invalidRequest;
 export const errorMessage = (state) => state.requestStatus.errorMessage;

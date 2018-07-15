@@ -1,4 +1,4 @@
-const data = {
+export const data = {
     pages: {
         home: {
             pretitle: 'Welcome to',
@@ -21,4 +21,7 @@ const data = {
     }
 };
 
-export default data;
+export const notFound = {
+    error: 'page not found'
+};
+
