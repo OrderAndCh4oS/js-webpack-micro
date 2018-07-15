@@ -1,9 +1,9 @@
 import * as api from '../api';
 import * as types from './types';
-import * as fromPage from '../reducers/page';
+import * as fromPage from '../reducers';
 
 const fetchPage = (page) => (dispatch, getState) => {
-    if (fromPage.isFetching(getState().app[page], page)) {
+    if (fromPage.isFetching(getState().app, page)) {
         return Promise.resolve();
     }
     dispatch({

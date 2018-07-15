@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import * as actions from '../actions';
-import * as page from '../reducers/page';
+import * as app from '../reducers';
 
 import {Column} from '../components/structure';
 import {IntroText, Pretitle, Text, Title} from '../components/typography';
@@ -47,9 +47,9 @@ class Page extends Component {
 const mapStateToPageProps = (state, {match}) => {
     const pageName = match.params.page || 'home';
     return {
-        page: page.getPage(state.app[pageName]),
-        isFetching: page.isFetching(state.app[pageName]),
-        errorMessage: page.errorMessage(state.app[pageName]),
+        page: app.getPage(state.app),
+        isFetching: app.isFetching(state.app),
+        errorMessage: app.errorMessage(state.app),
         pageName: pageName
     };
 };
