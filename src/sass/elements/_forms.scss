@@ -84,12 +84,12 @@ legend span {
     color: $text-color;
 }
 
-input.error {
+input.form-error {
     border-color: $error-color;
     margin-bottom: remCalc(6);
 }
 
-p.error {
+p.form-error, label.form-error {
     position: relative;
     top: -$half-column-gutter;
     font-size: $font-one;
