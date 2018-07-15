@@ -84,14 +84,12 @@ legend span {
     color: $text-color;
 }
 
-input.form-error {
+input.form-error, textarea.form-error, select.form-error {
     border-color: $error-color;
     margin-bottom: remCalc(6);
 }
 
 p.form-error, label.form-error {
-    position: relative;
-    top: -$half-column-gutter;
     font-size: $font-one;
     font-style: $font-style;
     color: $error-color;
