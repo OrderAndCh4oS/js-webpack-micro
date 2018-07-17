@@ -2,37 +2,40 @@
 
 import React from 'react';
 
-const Label = ({label, forName}) => <label htmlFor={forName} className="form-label">{label}</label>;
+const Label = ({label, htmlFor}) => <label htmlFor={htmlFor} className="form-label">{label}</label>;
 
-const FormError = ({error}) => error ? <div className="input-feedback">{error}</div> : null;
+const FormError = ({error}) => error ? <p className="form-error">{error}</p> : null;
 
-export const Field = ({type, classes = [], children, error}) => (
+export const Field = ({type, classes = [], children, error, name}) => (
     <div className={['form-field', type, ...classes].join(' ')}>
         {children}
-        <FormError error={error}/>
+        <FormError error={error} name={name}/>
     </div>
 );
 
-export const Input = ({label, id, type, error, classes = [], ...props}) => (
+export const Input = ({label, name, type, error, classes = [], ...props}) => (
     <Field type={type} error={error}>
-        <Label label={label} forName={id}/>
-        <input {...props} id={id} type={type} className={['form-input', ...classes].join(' ')}/>
+        <Label label={label} htmlFor={name}/>
+        <input {...props} id={name} name={name} type={type}
+               className={['form-input', error ? 'form-error' : '', ...classes].join(' ')}/>
     </Field>
 );
 
-export const TextArea = ({label, id, error, classes = [], ...props}) => (
+export const TextArea = ({label, name, error, classes = [], ...props}) => (
     <Field type='text-area' error={error}>
-        <Label label={label} forName={id}/>
-        <textarea {...props} id={id} className={['form-text-area', ...classes].join(' ')}/>
+        <Label label={label} htmlFor={name}/>
+        <textarea {...props} id={name} name={name}
+                  className={['form-text-area', error ? 'form-error' : '', ...classes].join(' ')}/>
     </Field>
 );
 
-export const Select = ({label, id, error, classes = [], options = [], initialField = 'Select an option', ...props}) => {
+export const Select = ({label, name, error, classes = [], options = [], initialField = 'Select an option', ...props}) => {
     return (
         <Field type='select' error={error}>
-            <Label label={label} forName={id}/>
-            <select {...props} className={['form-select', classes].join(' ')}>
-                <option value="-1">{initialField}</option>
+            <Label label={label} htmlFor={name}/>
+            <select {...props} id={name} name={name}
+                    className={['form-select', error ? 'form-error' : '', classes].join(' ')}>
+                <option value="">{initialField}</option>
                 {options.map((option) =>
                     <option key={option.value} value={option.value}>{option.name}</option>
                 )}
@@ -40,4 +43,3 @@ export const Select = ({label, id, error, classes = [], options = [], initialFie
         </Field>
     );
 };
-

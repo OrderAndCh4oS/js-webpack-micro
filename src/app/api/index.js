@@ -16,3 +16,24 @@ export const fetchPage = (page = 'home') => {
         throw new Error(`Something went wrong requesting ${page}`);
     });
 };
+
+export const postContactForm = (values) => {
+    return delay(500).then(() => {
+        const errors = {};
+        if (!values.hasOwnProperty('username') || values.username !== '') {
+            errors['username'] = 'Please provide a username';
+        }
+        if (!values.hasOwnProperty('email') || values.email !== '') {
+            errors['email'] = 'Please provide an email';
+        }
+        if (!values.hasOwnProperty('message') || values.message !== '') {
+            errors['message'] = 'Please provide an message';
+        }
+        if (errors.length) {
+            return errors;
+        }
+        console.log(values);
+        return {data: values};
+        //throw new Error(`Something went wrong requesting ${page}`);
+    });
+};
