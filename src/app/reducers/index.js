@@ -1,5 +1,4 @@
 import {combineReducers} from 'redux';
-import {reducer as formReducer} from 'redux-form';
 import requestStatuses from './request-statuses';
 import * as types from '../actions/types';
 
@@ -27,7 +26,6 @@ const app = combineReducers({
 
 const rootReducer = combineReducers({
     app,
-    form: formReducer
 });
 
 export default rootReducer;
