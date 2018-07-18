@@ -3,6 +3,7 @@ import {NavLink, Route, Switch} from 'react-router-dom';
 import {Column, Container, Row} from './structure';
 import CurrentPage from './page';
 import ContactPage from './contact-page';
+import {Title} from './typography';
 
 const isActiveFunc = (match) => {
     return match;
@@ -25,7 +26,10 @@ const App = () => (
         <div className="page-content">
             <Container>
                 <Row>
-                    <Column>
+                    <Column span={6}>
+                        <Title tag='h2'>Site Title</Title>
+                    </Column>
+                    <Column span={6}>
                         <Links/>
                     </Column>
                 </Row>
