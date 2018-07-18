@@ -8,6 +8,7 @@ import * as contactForm from '../reducers/contact-form';
 import * as Yup from 'yup';
 
 let ContactForm = ({
+                       redux,
                        values,
                        errors,
                        touched,
@@ -15,43 +16,45 @@ let ContactForm = ({
                        handleBlur,
                        isSubmitting,
                        isValid
-                   }) =>
-    <Form>
-        <div>
-            <Input name="fullname"
-                   label="Full Name"
-                   value={values.fullname}
-                   type="text"
-                   onChange={handleChange}
-                   onBlur={handleBlur}
-                   error={touched.fullname && errors.fullname}
-            />
-        </div>
-        <div>
-            <Input name="email"
-                   label="Email"
-                   value={values.email}
-                   type="email"
-                   classes={['email-field']}
-                   onChange={handleChange}
-                   onBlur={handleBlur}
-                   error={touched.email && errors.email}
-            />
-        </div>
-        <div>
-            <Select name="subject"
-                    label="Subject"
-                    value={values.subject}
-                    options={[
-                        {value: 'enquiry', name: 'Enquiry'},
-                        {value: 'request', name: 'Request'}
-                    ]}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    error={touched.subject && errors.subject}
-            />
-        </div>
-        <div>
+                   }) => {
+    console.log(values);
+    return (
+        <Form>
+            <div>
+                <Input name="fullname"
+                       label="Full Name"
+                       value={values.fullname}
+                       type="text"
+                       onChange={handleChange}
+                       onBlur={handleBlur}
+                       error={touched.fullname && errors.fullname}
+                />
+            </div>
+            <div>
+                <Input name="email"
+                       label="Email"
+                       value={values.email}
+                       type="email"
+                       classes={['email-field']}
+                       onChange={handleChange}
+                       onBlur={handleBlur}
+                       error={touched.email && errors.email}
+                />
+            </div>
+            <div>
+                <Select name="subject"
+                        label="Subject"
+                        value={values.subject}
+                        options={[
+                            {value: 'enquiry', name: 'Enquiry'},
+                            {value: 'request', name: 'Request'}
+                        ]}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        error={touched.subject && errors.subject}
+                />
+            </div>
+            <div>
             <TextArea name="message"
                       label="Message"
                       value={values.message}
@@ -59,23 +62,22 @@ let ContactForm = ({
                       onBlur={handleBlur}
                       error={touched.message && errors.message}
             />
-        </div>
-        <button type="submit" disabled={isSubmitting || !isValid}>Submit</button>
-    </Form>
-;
+            </div>
+            <button type="submit" disabled={isSubmitting || !isValid}>Submit</button>
+            {isSubmitting ? <p>Sending...</p> : null}
+        </Form>
+
+    );
+};
 
 ContactForm = withFormik({
     handleSubmit: (
         values,
         {setSubmitting, resetForm, props: {postContactForm}}
     ) => {
-
-        postContactForm({
-            fullname: values.fullname,
-            email: values.email,
-            subject: values.subject,
-            message: values.message
-        }).then(() => {
+        delete values.redux;
+        console.log('values', values);
+        postContactForm(values).then(() => {
             setSubmitting(false);
             resetForm();
         });
@@ -96,10 +98,12 @@ ContactForm = withFormik({
 
 const mapStateToContactFormProps = (state) => {
     return {
-        contactForm: contactForm.getContactForm(state.app.contactForm),
-        isFetching: contactForm.isFetching(state.app.contactForm),
-        isInvalid: contactForm.invalidRequest(state.app.contactForm),
-        errorMessage: contactForm.errorMessage(state.app.contactForm)
+        redux: {
+            contactForm: contactForm.getContactForm(state.app.contactForm),
+            isFetching: contactForm.isFetching(state.app.contactForm),
+            isInvalid: contactForm.invalidRequest(state.app.contactForm),
+            errorMessage: contactForm.errorMessage(state.app.contactForm)
+        }
     };
 };
 
