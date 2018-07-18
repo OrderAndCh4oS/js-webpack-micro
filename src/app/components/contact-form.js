@@ -17,13 +17,15 @@ let ContactForm = ({
                        isSubmitting,
                        isValid
                    }) => {
-    console.log(values);
+    if (redux.contactForm.sent) {
+        return <p>Thank you for your message</p>;
+    }
     return (
         <Form>
             <div>
                 <Input name="fullname"
                        label="Full Name"
-                       value={values.fullname}
+                       value={values.fullname || ''}
                        type="text"
                        onChange={handleChange}
                        onBlur={handleBlur}
@@ -33,7 +35,7 @@ let ContactForm = ({
             <div>
                 <Input name="email"
                        label="Email"
-                       value={values.email}
+                       value={values.email || ''}
                        type="email"
                        classes={['email-field']}
                        onChange={handleChange}
@@ -44,7 +46,7 @@ let ContactForm = ({
             <div>
                 <Select name="subject"
                         label="Subject"
-                        value={values.subject}
+                        value={values.subject || ''}
                         options={[
                             {value: 'enquiry', name: 'Enquiry'},
                             {value: 'request', name: 'Request'}
@@ -57,7 +59,7 @@ let ContactForm = ({
             <div>
             <TextArea name="message"
                       label="Message"
-                      value={values.message}
+                      value={values.message || ''}
                       onChange={handleChange}
                       onBlur={handleBlur}
                       error={touched.message && errors.message}

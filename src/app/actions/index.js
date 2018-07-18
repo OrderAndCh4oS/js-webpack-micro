@@ -47,10 +47,16 @@ const postContactForm = (values) => (dispatch, getState) => {
     return api.postContactForm(values).then(
         response => {
             if (!response.error) {
+                response.data.sent = true;
                 dispatch({
                     type: types.CONTACT_SUCCESS,
                     response: response.data
                 });
+                setTimeout(() => {
+                    dispatch({
+                        type: types.CONTACT_RESET
+                    });
+                }, 5000);
             } else {
                 dispatch({
                     type: types.CONTACT_INVALID,

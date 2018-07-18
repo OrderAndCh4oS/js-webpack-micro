@@ -7,6 +7,8 @@ const contactForm = () => {
         switch (action.type) {
             case types.CONTACT_SUCCESS:
                 return action.response;
+            case types.CONTACT_RESET:
+                return {};
             default:
                 return state;
         }
