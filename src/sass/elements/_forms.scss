@@ -2,9 +2,10 @@ form {
 }
 
 fieldset {
-    margin-bottom: $column-gutter;
+  margin-bottom: $column-gutter;
 }
 
+input,
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -16,26 +17,29 @@ input[type="date"],
 input[type="time"],
 input[type="color"],
 textarea,
-select {
-    box-sizing: border-box;
-    border: $form-border;
-    padding: $form-padding;
-    outline: none;
-    font-size: $form-font-size;
-    font-family: $base-font-family;
-    font-weight: $font-weight-regular;
-    color: $input-color;
-    margin: 0 0 $column-gutter 0;
-    width: $form-width;
-    max-width: 100%;
-    display: block;
-    background: $white;
+select,
+.read-only {
+  box-sizing: border-box;
+  border: $form-border;
+  padding: $form-padding;
+  outline: none;
+  font-size: $form-font-size;
+  font-family: $base-font-family;
+  font-weight: $font-weight-regular;
+  color: $input-color;
+  margin: 0 0 $column-gutter 0;
+  width: $form-width;
+  max-width: 100%;
+  display: block;
+  background: $white;
+  border-radius: $global-radius;
 }
 
 select {
-    padding: $select-padding;
+  padding: $select-padding;
 }
 
+input,
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="email"]:focus,
@@ -47,53 +51,79 @@ input[type="date"]:focus,
 input[type="time"]:focus,
 input[type="color"]:focus,
 textarea:focus {
-    border: $form-border-focus;
-    color: $input-focus-color;
+  border: $form-border-focus;
+  color: $input-focus-color;
 }
 
 textarea, #cke_content {
-    min-height: 60px;
-    margin-bottom: $column-gutter;
+  min-height: 60px;
+  margin-bottom: $column-gutter;
 }
 
 label,
 legend {
-    display: block;
-    font-weight: $font-weight-bold;
-    font-size: $font-one;
-    margin: 0 0 remCalc(6) 0;
+  display: block;
+  font-weight: $font-weight-bold;
+  font-size: $font-one;
+  margin: 0 0 remCalc(6) 0;
 }
 
 select {
-    width: $form-width;
+  width: $form-width;
 }
 
 label.inline {
-    display: inline;
+  display: inline;
 }
 
 input[type="checkbox"],
 input[type="radio"] {
-    display: inline;
-    margin-bottom: 0;
+  display: inline-block;
+  margin-bottom: 0;
+  width: auto;
 }
 
 legend span {
-    font-weight: normal;
-    font-size: $font-one;
-    color: $text-color;
+  font-weight: normal;
+  font-size: $font-one;
+  color: $text-color;
 }
 
-input.form-error, textarea.form-error, select.form-error {
-    border-color: $error-color;
-    margin-bottom: remCalc(6);
+input.error {
+  border-color: $error-color;
+  margin-bottom: remCalc(6);
 }
 
-p.form-error, label.form-error {
-    font-size: $font-one;
-    font-style: $font-style;
-    color: $error-color;
-    margin-bottom: $half-column-gutter;
+p.error {
+  position: relative;
+  top: -$half-column-gutter;
+  font-size: $font-one;
+  font-style: $font-style;
+  color: $error-color;
+  margin-bottom: $half-column-gutter;
 }
 
+.input-label {
+  margin-bottom: $half-column-gutter;
+}
 
+.read-only {
+  min-height: remCalc(34);
+  background-color: $lighter-grey;
+}
+
+input.no-margin,
+input[type="text"].no-margin,
+input[type="password"].no-margin,
+input[type="email"].no-margin,
+input[type="tel"].no-margin,
+input[type="url"].no-margin,
+input[type="number"].no-margin,
+input[type="search"].no-margin,
+input[type="date"].no-margin,
+input[type="time"].no-margin,
+input[type="color"].no-margin,
+textarea.no-margin,
+select.no-margin {
+  margin: 0;
+}

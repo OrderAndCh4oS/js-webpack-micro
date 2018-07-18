@@ -2,11 +2,11 @@
 import React from 'react';
 
 export const Container = ({classes = [], children}) =>
-    <div className={['container', ...classes]}>{children}</div>;
+    <div className={['container', ...classes].join(' ')}>{children}</div>;
 
 export const ContainerPanel = ({classes = [], children}) =>
     <Container>
-        <div className={['panel', ...classes]}>
+        <div className={['panel', ...classes].join(' ')}>
             {children}
         </div>
     </Container>;
@@ -19,7 +19,7 @@ export const Column = ({span = 12, push = false, classes = [], children}) => {
         'col-' + span,
         push ? ' push-' + push : '',
         ...classes
-    ];
+    ].join(' ');
     return (
         <div className={classes}>
             <div>
@@ -30,7 +30,7 @@ export const Column = ({span = 12, push = false, classes = [], children}) => {
 };
 
 export const Table = ({headers = [], rows = [], classes = []}) =>
-    <table className={classes}>
+    <table className={classes.join(' ')}>
         <thead>
         <tr>
             {headers.map((header, index) => <th key={index}>{header}</th>)}

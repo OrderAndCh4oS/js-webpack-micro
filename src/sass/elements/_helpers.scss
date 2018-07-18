@@ -1,21 +1,36 @@
 
+.hide {
+  display: none;
+}
+
+.panel {
+  border: $border-width $border-stroke $light-grey;
+  background-color: $lightest-grey;
+  padding: $column-gutter $column-gutter 0 $column-gutter;
+  border-radius: $global-radius;
+}
+
 .accent {
     color: $accent;
+}
+
+.relative {
+  position: relative;
 }
 
 .text-color {
     color: $text-color;
 }
 
-.margin-none {
-    margin-bottom: 0;
+.no-margin {
+  margin: 0;
 }
 
-.no-pad-bottom {
+.no-padding-bottom {
     padding-bottom: 0;
 }
 
-.no-pad {
+.no-padding {
     padding-bottom: 0;
     padding-top: 0;
 }
@@ -38,15 +53,6 @@
 
 .bc-transparent {
     background-color: transparent;
-}
-
-.panel {
-    border: $border;
-    border-radius: 4px;
-}
-
-.panel-padding {
-    padding: $half-column-gutter;
 }
 
 .negative {

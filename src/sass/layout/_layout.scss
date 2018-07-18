@@ -1,6 +1,46 @@
 .page-wrapper {
   min-height: 100%;
-  padding: $column-gutter*3 $column-gutter*2;
+  padding: $column-gutter*2 $column-gutter*3;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  border: 1px solid $light-grey;
+  border-radius: $global-radius;
+}
+
+.main-header {
+  border-bottom: $border;
+  margin-bottom: $column-gutter*2;
+  .column {
+    padding-bottom: $half-column-gutter;
+  }
+}
+
+.main-nav {
+  margin-top: 14px;
+  margin-right: -$half-column-gutter;
+  float: right;
+  a {
+    font-size: $font-two;
+    margin-right: remCalc(16);
+    color: $grey;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    &:hover {
+      color: $dark-grey;
+    }
+    &.active {
+      color: $black;
+    }
+  }
+}
+
+.reset-3d {
+  position: relative;
+  bottom: remCalc(60);
+  right: remCalc(-20);
 }
 
 @media #{$small-up} {
