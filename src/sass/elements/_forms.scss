@@ -27,12 +27,17 @@ select,
   font-family: $base-font-family;
   font-weight: $font-weight-regular;
   color: $input-color;
-  margin: 0 0 $column-gutter 0;
   width: $form-width;
   max-width: 100%;
   display: block;
   background: $white;
   border-radius: $global-radius;
+  margin: 0;
+  transition: background-color 280ms ease-in-out, border-color 400ms ease-in-out;
+  &.form-error {
+    background-color: #ffe0e8;
+    border-color: $red;
+  }
 }
 
 select {
@@ -57,7 +62,6 @@ textarea:focus {
 
 textarea, #cke_content {
   min-height: 60px;
-  margin-bottom: $column-gutter;
 }
 
 label,
@@ -89,20 +93,6 @@ legend span {
   color: $text-color;
 }
 
-input.error {
-  border-color: $error-color;
-  margin-bottom: remCalc(6);
-}
-
-p.error {
-  position: relative;
-  top: -$half-column-gutter;
-  font-size: $font-one;
-  font-style: $font-style;
-  color: $error-color;
-  margin-bottom: $half-column-gutter;
-}
-
 .input-label {
   margin-bottom: $half-column-gutter;
 }
@@ -127,3 +117,16 @@ textarea.no-margin,
 select.no-margin {
   margin: 0;
 }
+
+.form-field {
+  padding-bottom: $column-gutter;
+}
+
+p.form-error, span.form-error {
+  padding-top: $half-column-gutter;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  color: $red;
+  font-style: italic;
+}
+

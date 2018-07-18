@@ -65,7 +65,7 @@ let ContactForm = ({
                 value={values.newsletter || false}
                 onChange={setFieldValue}
                 onBlur={setFieldTouched}
-                error={touched.message && errors.message}
+                error={touched.newsletter && errors.newsletter}
             />
             <button type="submit" disabled={isSubmitting || !isValid}>Submit</button>
             {isSubmitting ? <p>Sending...</p> : null}
