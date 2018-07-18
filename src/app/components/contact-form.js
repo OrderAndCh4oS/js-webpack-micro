@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types,indent */
 import React from 'react';
-import {Input, Select, TextArea} from './form-elements';
+import {Input, Select, Switch, TextArea} from './form-elements';
 import {Form, withFormik} from 'formik';
 import {connect} from 'react-redux';
 import * as actions from '../actions';
@@ -15,48 +15,43 @@ let ContactForm = ({
                        handleChange,
                        handleBlur,
                        isSubmitting,
-                       isValid
+                       isValid,
+                       setFieldValue,
+                       setFieldTouched
                    }) => {
     if (redux.contactForm.sent) {
         return <p>Thank you for your message</p>;
     }
     return (
         <Form>
-            <div>
-                <Input name="fullname"
-                       label="Full Name"
-                       value={values.fullname || ''}
-                       type="text"
-                       onChange={handleChange}
-                       onBlur={handleBlur}
-                       error={touched.fullname && errors.fullname}
-                />
-            </div>
-            <div>
-                <Input name="email"
-                       label="Email"
-                       value={values.email || ''}
-                       type="email"
-                       classes={['email-field']}
-                       onChange={handleChange}
-                       onBlur={handleBlur}
-                       error={touched.email && errors.email}
-                />
-            </div>
-            <div>
-                <Select name="subject"
-                        label="Subject"
-                        value={values.subject || ''}
-                        options={[
-                            {value: 'enquiry', name: 'Enquiry'},
-                            {value: 'request', name: 'Request'}
-                        ]}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={touched.subject && errors.subject}
-                />
-            </div>
-            <div>
+            <Input name="fullname"
+                   label="Full Name"
+                   value={values.fullname || ''}
+                   type="text"
+                   onChange={handleChange}
+                   onBlur={handleBlur}
+                   error={touched.fullname && errors.fullname}
+            />
+            <Input name="email"
+                   label="Email"
+                   value={values.email || ''}
+                   type="email"
+                   classes={['email-field']}
+                   onChange={handleChange}
+                   onBlur={handleBlur}
+                   error={touched.email && errors.email}
+            />
+            <Select name="subject"
+                    label="Subject"
+                    value={values.subject || ''}
+                    options={[
+                        {value: 'enquiry', name: 'Enquiry'},
+                        {value: 'request', name: 'Request'}
+                    ]}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={touched.subject && errors.subject}
+            />
             <TextArea name="message"
                       label="Message"
                       value={values.message || ''}
@@ -64,7 +59,14 @@ let ContactForm = ({
                       onBlur={handleBlur}
                       error={touched.message && errors.message}
             />
-            </div>
+            <Switch
+                name="newsletter"
+                label="Newsletter"
+                value={values.newsletter || false}
+                onChange={setFieldValue}
+                onBlur={setFieldTouched}
+                error={touched.message && errors.message}
+            />
             <button type="submit" disabled={isSubmitting || !isValid}>Submit</button>
             {isSubmitting ? <p>Sending...</p> : null}
         </Form>
@@ -94,7 +96,8 @@ ContactForm = withFormik({
             .email('Invalid email address')
             .required('Email is required!'),
         message: Yup.string()
-            .required('Message is required')
+            .required('Message is required'),
+        newsletter: Yup.boolean()
     })
 })(ContactForm);
 

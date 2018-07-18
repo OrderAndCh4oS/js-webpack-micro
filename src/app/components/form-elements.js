@@ -43,3 +43,22 @@ export const Select = ({label, name, error, classes = [], options = [], initialF
         </Field>
     );
 };
+
+export const Switch = ({value = false, label, name, error, classes = [], onChange, onBlur, ...props}) => {
+    classes = ['switch', classes, value ? 'on' : ''].join(' ');
+    const title = [value ? 'on' : 'off'].join(' ');
+    return (
+        <Field type='switch' error={error}>
+            <Label label={label} htmlFor={name}/>
+            <button type='button' id={name} title={title} className={classes}
+                    onBlur={() => {
+                        onBlur(true);
+                    }}
+                    onClick={() => {
+                        onChange(name, !value);
+                    }}
+                    {...props}
+            />
+        </Field>
+    );
+};
