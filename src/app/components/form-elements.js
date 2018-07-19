@@ -83,10 +83,10 @@ const StyledSlider = (props) =>
         trackStyle={{backgroundColor: '#fcfcfc', height: 6, marginTop: 1, marginLeft: 1}}
     />;
 
-export const MySlider = ({label, value, name, type, error, classes = [], onChange, onBlur, ...props}) => {
+export const MySlider = ({label, value, name, type, error, decimals = 0, classes = [], onChange, onBlur, ...props}) => {
     return (
         <Field type={type} error={error}>
-            <Label label={label + ': ' + value} htmlFor={name}/>
+            <Label label={label + ': ' + value.toFixed(decimals)} htmlFor={name}/>
             <StyledSlider
                 name={name}
                 id={name}
@@ -95,7 +95,7 @@ export const MySlider = ({label, value, name, type, error, classes = [], onChang
                 onChange={(value) => {
                     onChange(name, value);
                 }}
-                onBlur={() => {
+                onLoad={() => {
                     onBlur(true);
                 }}
                 {...props}

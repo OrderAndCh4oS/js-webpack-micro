@@ -2,6 +2,7 @@ import * as api from '../api';
 import * as types from './types';
 import * as fromPage from '../reducers/pages';
 import * as fromContactForm from '../reducers/contact-form';
+import * as fromPlotForm from '../reducers/plot-form';
 
 const fetchPage = (page) => (dispatch, getState) => {
     if (fromPage.isFetching(getState().app.page, page)) {
@@ -74,4 +75,37 @@ const postContactForm = (values) => (dispatch, getState) => {
         });
 };
 
-export {fetchPage, postContactForm};
+const postPlotForm = (values) => (dispatch, getState) => {
+    if (fromPlotForm.isFetching(getState().app.plotForm)) {
+        return Promise.resolve();
+    }
+    dispatch({
+        type: types.PLOT_REQUEST,
+        values
+    });
+    return api.postPlotForm(values).then(
+        response => {
+            if (!response.error) {
+                response.data.sent = true;
+                dispatch({
+                    type: types.PLOT_SUCCESS,
+                    response: response.data
+                });
+            } else {
+                dispatch({
+                    type: types.PLOT_INVALID,
+                    values,
+                    message: response.error
+                });
+            }
+        },
+        error => {
+            dispatch({
+                type: types.PLOT_FAILURE,
+                values,
+                message: error.message || 'Something went wrong'
+            });
+        });
+};
+
+export {fetchPage, postContactForm, postPlotForm};

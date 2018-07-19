@@ -37,3 +37,10 @@ export const postContactForm = (values) => {
         //throw new Error(`Something went wrong requesting ${page}`);
     });
 };
+
+export const postPlotForm = (values) => {
+    return delay(500).then(() => {
+        return {data: values};
+        //throw new Error(`Something went wrong requesting ${page}`);
+    });
+};

@@ -4,6 +4,7 @@ import {Column, Container, Row} from './structure';
 import CurrentPage from './page';
 import ContactPage from './contact-page';
 import {Title} from './typography';
+import PlotPage from './plot-page';
 
 const isActiveFunc = (match) => {
     return match;
@@ -18,6 +19,8 @@ const Links = () => (
         <NavLink strict isActive={isActiveFunc} activeClassName="active" to="/two">Two</NavLink>
         {' '}
         <NavLink strict isActive={isActiveFunc} activeClassName="active" to="/contact-us">Contact Us</NavLink>
+        {' '}
+        <NavLink strict isActive={isActiveFunc} activeClassName="active" to="/plot">Plot</NavLink>
     </nav>
 );
 
@@ -37,6 +40,7 @@ const App = () => (
             <Container>
                 <Switch>
                     <Route exact path="/contact-us" component={ContactPage}/>
+                    <Route exact path="/plot" component={PlotPage}/>
                     <Route exact path="/:page?" component={CurrentPage}/>
                 </Switch>
             </Container>
