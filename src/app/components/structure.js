@@ -45,3 +45,11 @@ export const Table = ({headers = [], rows = [], classes = []}) =>
         )}
         </tbody>
     </table>;
+
+export const PlotContainer = ({legend, children}) =>
+    <div className='plot-container'>
+        <div className='plot-holder'>
+            {children}
+        </div>
+        {legend}
+    </div>;

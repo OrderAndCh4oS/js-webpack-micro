@@ -8,7 +8,7 @@ import * as Yup from 'yup';
 import * as actions from '../actions';
 import * as plotForm from '../reducers/plot-form';
 
-import {Column, ContainerPanel, Row} from './structure';
+import {Column, ContainerPanel, PlotContainer, Row} from './structure';
 import {Input, MySlider, Switch} from './form-elements';
 
 let PlotForm = ({
@@ -38,7 +38,6 @@ let PlotForm = ({
         }
         return labels;
     })();
-    console.log(data);
     const chartData = {
         labels: labels,
         datasets: [{
@@ -55,21 +54,19 @@ let PlotForm = ({
     const chartOptions = {
         responsive: true,
         maintainAspectRatio: false
-
     };
 
     return (
         <ContainerPanel>
             <Row>
                 <Column>
-                    <div style={{
-                        position: 'relative',
-                        width: '100%',
-                        height: '400px',
-                        overflow: 'hidden'
-                    }}>
+                    <PlotContainer legend={<div className={'plot-legend'}>
+                        <ul>
+                            <li className='grey'>Random Points</li>
+                        </ul>
+                    </div>}>
                         <Line data={chartData} options={chartOptions} width={1000} height={400}/>
-                    </div>
+                    </PlotContainer>
                 </Column>
             </Row>
             <Row>
