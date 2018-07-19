@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 
 import React from 'react';
+import Slider from 'rc-slider/lib/Slider';
+import 'rc-slider/assets/index.css';
 
 const Label = ({label, htmlFor}) => <label htmlFor={htmlFor} className="form-label">{label}</label>;
 
@@ -34,7 +36,7 @@ export const Select = ({label, name, error, classes = [], options = [], initialF
         <Field type='select' error={error}>
             <Label label={label} htmlFor={name}/>
             <select {...props} id={name} name={name}
-                    className={['form-select', error ? 'form-error' : '', classes].join(' ')}>
+                    className={['form-select', error ? 'form-error' : '', ...classes].join(' ')}>
                 <option value="">{initialField}</option>
                 {options.map((option) =>
                     <option key={option.value} value={option.value}>{option.name}</option>
@@ -58,6 +60,45 @@ export const Switch = ({value = false, label, name, error, classes = [], onChang
                         onChange(name, !value);
                     }}
                     {...props}
+            />
+        </Field>
+    );
+};
+
+const StyledSlider = (props) =>
+    <Slider
+        {...props}
+        style={{marginTop: 18}}
+        handleStyle={{
+            borderColor: '#332f2f',
+            borderWidth: 1,
+            height: 14,
+            width: 14,
+            marginLeft: -7,
+            marginTop: -3,
+            backgroundColor: '#fcfcfc'
+
+        }}
+        railStyle={{backgroundColor: '#332f2f', height: 8}}
+        trackStyle={{backgroundColor: '#fcfcfc', height: 6, marginTop: 1, marginLeft: 1}}
+    />;
+
+export const MySlider = ({label, value, name, type, error, classes = [], onChange, onBlur, ...props}) => {
+    return (
+        <Field type={type} error={error}>
+            <Label label={label + ': ' + value} htmlFor={name}/>
+            <StyledSlider
+                name={name}
+                id={name}
+                value={value}
+                className={['form-slider', ...classes].join(' ')}
+                onChange={(value) => {
+                    onChange(name, value);
+                }}
+                onBlur={() => {
+                    onBlur(true);
+                }}
+                {...props}
             />
         </Field>
     );

@@ -68,6 +68,20 @@ module.exports = {
                 })
             },
             {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract({
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                sourceMap: true
+                            }
+                        }
+                    ],
+                    fallback: 'style-loader'
+                })
+            },
+            {
                 test: /\.(eot|ttf|woff|woff2)$/,
                 use: 'file-loader'
             },

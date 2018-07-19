@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types,indent */
 import React from 'react';
-import {Input, Select, Switch, TextArea} from './form-elements';
+import {Input, MySlider, Select, Switch, TextArea} from './form-elements';
 import {Form, withFormik} from 'formik';
 import {connect} from 'react-redux';
 import * as actions from '../actions';
@@ -67,10 +67,18 @@ let ContactForm = ({
                 onBlur={setFieldTouched}
                 error={touched.newsletter && errors.newsletter}
             />
+            <MySlider
+                name="slider"
+                label="Slider"
+                value={values.slider || 50}
+                defaultValue={50} min={0} max={100} step={1}
+                onChange={setFieldValue}
+                onBlur={setFieldTouched}
+                error={touched.slider && errors.slider}
+            />
             <button type="submit" disabled={isSubmitting || !isValid}>Submit</button>
             {isSubmitting ? <p>Sending...</p> : null}
         </Form>
-
     );
 };
 
@@ -97,6 +105,10 @@ ContactForm = withFormik({
             .required('Email is required!'),
         message: Yup.string()
             .required('Message is required'),
+        slider: Yup.number()
+            .min(0, 'At least 0')
+            .max(100, 'At most 100')
+        ,
         newsletter: Yup.boolean()
     })
 })(ContactForm);
