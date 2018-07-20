@@ -86,7 +86,6 @@ const postPlotForm = (values) => (dispatch, getState) => {
     return api.postPlotForm(values).then(
         response => {
             if (!response.error) {
-                response.data.sent = true;
                 dispatch({
                     type: types.PLOT_SUCCESS,
                     response: response.data
