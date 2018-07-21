@@ -3,7 +3,7 @@ import requestStatuses from './request-statuses';
 import * as types from '../actions/types';
 
 const auth = () => {
-    const data = (state = {}, action) => {
+    const data = (state = {token: null}, action) => {
         switch (action.type) {
             case types.CREDENTIALS_FETCH.SUCCESS:
                 return action.response;
