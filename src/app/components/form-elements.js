@@ -6,22 +6,24 @@ import 'rc-slider/assets/index.css';
 
 const Label = ({label, htmlFor}) => <label htmlFor={htmlFor} className="form-label">{label}</label>;
 
-const FormError = ({error}) => error ? <p className="form-error">{error}</p> : null;
+export const FormError = ({error}) => error ? <p className="form-error">{error}</p> : null;
 
-export const Field = ({type, classes = [], children, error, name}) => (
+export const Field = ({type, classes = [], children, error}) => (
     <div className={['form-field', type, ...classes].join(' ')}>
         {children}
-        <FormError error={error} name={name}/>
+        <FormError error={error}/>
     </div>
 );
 
-export const Input = ({label, name, type, error, classes = [], ...props}) => (
-    <Field type={type} error={error}>
-        <Label label={label} htmlFor={name}/>
-        <input {...props} id={name} name={name} type={type}
-               className={['form-input', error ? 'form-error' : '', ...classes].join(' ')}/>
-    </Field>
-);
+export const Input = ({label, name, type, error, classes = [], ...props}) => {
+    return (
+        <Field type={type} error={error}>
+            <Label label={label} htmlFor={name}/>
+            <input {...props} id={name} name={name} type={type}
+                   className={['form-input', error ? 'form-error' : '', ...classes].join(' ')}/>
+        </Field>
+    );
+};
 
 export const TextArea = ({label, name, error, classes = [], ...props}) => (
     <Field type='text-area' error={error}>

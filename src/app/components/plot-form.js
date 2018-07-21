@@ -121,7 +121,6 @@ PlotForm = withFormik({
         {setSubmitting, props: {postPlotForm}}
     ) => {
         delete values.redux;
-        console.log('values', values);
         postPlotForm(values).then(() => {
             setSubmitting(false);
         });

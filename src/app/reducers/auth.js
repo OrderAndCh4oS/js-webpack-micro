@@ -2,7 +2,7 @@ import {combineReducers} from 'redux';
 import requestStatuses from './request-statuses';
 import * as types from '../actions/types';
 
-const loginForm = () => {
+const auth = () => {
     const data = (state = {}, action) => {
         switch (action.type) {
             case types.CREDENTIALS_FETCH.SUCCESS:
@@ -20,9 +20,9 @@ const loginForm = () => {
     });
 };
 
-export default loginForm;
+export default auth;
 
-export const getLoginForm = (state) => state.data;
+export const getAuth = (state) => state.data;
 export const isFetching = (state) => state.requestStatus.isFetching;
 export const invalidRequest = (state) => state.requestStatus.invalidRequest;
 export const errorMessage = (state) => state.requestStatus.errorMessage;

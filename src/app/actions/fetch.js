@@ -21,6 +21,7 @@ const fetchData = (apiCall, isFetching, {REQUEST, SUCCESS, INVALID, FAILURE}) =>
                     message: response.error
                 });
             }
+            return response;
         },
         error => {
             dispatch({
@@ -28,6 +29,7 @@ const fetchData = (apiCall, isFetching, {REQUEST, SUCCESS, INVALID, FAILURE}) =>
                 values: values,
                 message: error.message || 'Something went wrong'
             });
+            return error;
         });
 };
 

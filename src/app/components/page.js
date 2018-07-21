@@ -34,10 +34,8 @@ class Page extends Component {
         if (errorMessage && !page.length) {
             return <ErrorMessage><Text>{errorMessage}</Text></ErrorMessage>;
         }
-        console.log(isInvalid && !page.length);
 
         if (isInvalid && !page.length) {
-            console.log('hallo');
             return <ErrorMessage title="404 Error"><Text>{isInvalid}</Text></ErrorMessage>;
         }
         return (

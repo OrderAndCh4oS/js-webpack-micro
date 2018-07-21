@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types,indent */
 import React from 'react';
-import {Input} from './form-elements';
+import {FormError, Input} from './form-elements';
 import {Form, withFormik} from 'formik';
 import {connect} from 'react-redux';
 import * as actions from '../actions';
@@ -14,12 +14,8 @@ let LoginForm = ({
                      touched,
                      handleChange,
                      handleBlur,
-                     isSubmitting,
-                     isValid
+                     isSubmitting
                  }) => {
-    if (redux.didComplete) {
-        return <p>Logged in</p>;
-    }
     return (
         <Form>
             <Input name="username"
@@ -39,7 +35,8 @@ let LoginForm = ({
                    onBlur={handleBlur}
                    error={touched.password && errors.password}
             />
-            <button type="submit" disabled={isSubmitting || !isValid}>Login</button>
+            <button type="submit" disabled={isSubmitting}>Login</button>
+            <FormError error={errors.general}/>
             {isSubmitting ? <p>Checking credentials...</p> : null}
         </Form>
     );
@@ -48,15 +45,15 @@ let LoginForm = ({
 LoginForm = withFormik({
     handleSubmit: (
         values,
-        {setSubmitting, resetForm, props: {postCredentials}}
+        {setSubmitting, resetForm, setErrors, props: {postCredentials}}
     ) => {
         delete values.redux;
-        console.log('values', values);
-        postCredentials(values).then(() => {
+        postCredentials(values).then((response) => {
             setSubmitting(false);
             resetForm();
-        }).then(() => {
-            console.log('done!');
+            if (response.hasOwnProperty('error')) {
+                setErrors({general: response.error});
+            }
         });
     },
     validationSchema: Yup.object().shape({
@@ -70,10 +67,10 @@ LoginForm = withFormik({
 const mapStateToLoginFormProps = (state) => {
     return {
         redux: {
-            loginForm: fromReducers.getLoginForm(state),
-            isFetching: fromReducers.isFetchingLoginForm(state),
-            isInvalid: fromReducers.loginFormInvalidRequest(state),
-            errorMessage: fromReducers.loginFormErrorMessage(state)
+            loginForm: fromReducers.getAuth(state),
+            isFetching: fromReducers.isFetchingAuth(state),
+            isInvalid: fromReducers.authInvalidRequest(state),
+            errorMessage: fromReducers.authErrorMessage(state)
         }
     };
 };

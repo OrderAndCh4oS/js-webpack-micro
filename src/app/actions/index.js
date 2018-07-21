@@ -5,7 +5,7 @@ import fetchData from './fetch';
 
 const fetchPage = fetchData(apiCalls.fetchPage, fromReducers.isFetchingPage, types.PAGE_FETCH);
 
-const postCredentials = fetchData(apiCalls.postCredentials, fromReducers.isFetchingLoginForm, types.CREDENTIALS_FETCH);
+const postCredentials = fetchData(apiCalls.postCredentials, fromReducers.isFetchingAuth, types.CREDENTIALS_FETCH);
 
 const postContactForm = fetchData(apiCalls.postContactForm, fromReducers.isFetchingContactForm, types.CONTACT_FETCH);
 

@@ -87,14 +87,11 @@ ContactForm = withFormik({
         values,
         {setSubmitting, resetForm, props: {postContactForm, resetContactForm}}
     ) => {
-        console.log('values', values);
         delete values.redux;
-        console.log('values', values);
         postContactForm(values).then(() => {
             setSubmitting(false);
             resetForm();
         }).then(() => {
-            console.log('reset form here');
             resetContactForm();
         });
     },

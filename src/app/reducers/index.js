@@ -1,12 +1,12 @@
 import {combineReducers} from 'redux';
 import page, * as fromPages from './pages';
-import loginForm, * as fromLoginForm from './login-form';
+import auth, * as fromAuth from './auth';
 import contactForm, * as fromContactForm from './contact-form';
 import plotForm, * as fromPlotForm from './plot-form';
 
 const app = combineReducers({
     page: page(),
-    loginForm: loginForm(),
+    auth: auth(),
     contactForm: contactForm(),
     plotForm: plotForm()
 });
@@ -22,10 +22,10 @@ export const isFetchingPage = (state, page) => fromPages.isFetching(state.app.pa
 export const pageErrorMessage = (state) => fromPages.errorMessage(state.app.page);
 export const pageInvalidRequest = (state) => fromPages.invalidRequest(state.app.page);
 
-export const getLoginForm = (state) => fromLoginForm.getLoginForm(state.app.loginForm);
-export const isFetchingLoginForm = (state) => fromLoginForm.isFetching(state.app.loginForm);
-export const loginFormErrorMessage = (state) => fromPages.errorMessage(state.app.loginForm);
-export const loginFormInvalidRequest = (state) => fromPages.invalidRequest(state.app.loginForm);
+export const getAuth = (state) => fromAuth.getAuth(state.app.auth);
+export const isFetchingAuth = (state) => fromAuth.isFetching(state.app.auth);
+export const authErrorMessage = (state) => fromPages.errorMessage(state.app.auth);
+export const authInvalidRequest = (state) => fromPages.invalidRequest(state.app.auth);
 
 export const getPlotForm = (state) => fromPlotForm.getPlotForm(state.app.plotForm);
 export const isFetchingPlotForm = (state) => fromPlotForm.isFetching(state.app.plotForm);
