@@ -2,17 +2,17 @@ import {combineReducers} from 'redux';
 import requestStatuses from './request-statuses';
 import * as types from '../actions/types';
 
-const plotForm = () => {
+const loginForm = () => {
     const data = (state = {}, action) => {
         switch (action.type) {
-            case types.PLOT_FETCH.SUCCESS:
+            case types.CREDENTIALS_FETCH.SUCCESS:
                 return action.response;
             default:
                 return state;
         }
     };
 
-    const requestStatus = requestStatuses(undefined, types.PLOT_FETCH);
+    const requestStatus = requestStatuses(undefined, types.CREDENTIALS_FETCH);
 
     return combineReducers({
         data,
@@ -20,9 +20,9 @@ const plotForm = () => {
     });
 };
 
-export default plotForm;
+export default loginForm;
 
-export const getPlotForm = (state) => state.data;
+export const getLoginForm = (state) => state.data;
 export const isFetching = (state) => state.requestStatus.isFetching;
 export const invalidRequest = (state) => state.requestStatus.invalidRequest;
 export const errorMessage = (state) => state.requestStatus.errorMessage;

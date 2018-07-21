@@ -45,3 +45,25 @@ export const postPlotForm = (values) => {
         //throw new Error(`Something went wrong requesting ${page}`);
     });
 };
+
+export const postCredentials = (values) => {
+    return delay(500).then(() => {
+        const errors = [];
+        if (!values.hasOwnProperty('username') || values.username !== '') {
+            errors['username'] = 'Please provide a username';
+        }
+        if (!values.hasOwnProperty('password') || values.password !== '') {
+            errors['password'] = 'Please provide a password';
+        }
+        if (errors.length) {
+            return errors;
+        }
+        if (['admin', 'user'].find(k => k === values.username) && values.password === 'secret') {
+            return {data: values};
+        } else {
+            return {error: 'invalid credentials'};
+        }
+
+        //throw new Error(`Something went wrong requesting ${page}`);
+    });
+};
