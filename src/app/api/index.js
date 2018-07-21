@@ -8,7 +8,7 @@ export const fetchPage = (page = 'home') => {
     return delay(500).then(() => {
         if (Math.random() < 0.9) {
             if (data.pages.hasOwnProperty(page)) {
-                return data.pages[page];
+                return {data: data.pages[page]};
             } else {
                 return notFound;
             }
@@ -39,6 +39,7 @@ export const postContactForm = (values) => {
 };
 
 export const postPlotForm = (values) => {
+    console.log('values: ', values);
     return delay(500).then(() => {
         return {data: values};
         //throw new Error(`Something went wrong requesting ${page}`);

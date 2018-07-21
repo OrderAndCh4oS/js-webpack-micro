@@ -5,7 +5,7 @@ import * as types from '../actions/types';
 const contactForm = () => {
     const data = (state = {}, action) => {
         switch (action.type) {
-            case types.CONTACT_SUCCESS:
+            case types.CONTACT_FETCH.SUCCESS:
                 return action.response;
             case types.CONTACT_RESET:
                 return {};
@@ -14,13 +14,7 @@ const contactForm = () => {
         }
     };
 
-    const requestTypes = {
-        request: types.CONTACT_REQUEST,
-        success: types.CONTACT_SUCCESS,
-        invalid: types.CONTACT_INVALID,
-        failure: types.CONTACT_FAILURE
-    };
-    const requestStatus = requestStatuses(undefined, requestTypes);
+    const requestStatus = requestStatuses(undefined, types.CONTACT_FETCH);
 
     return combineReducers({
         data,
@@ -32,5 +26,6 @@ export default contactForm;
 
 export const getContactForm = (state) => state.data;
 export const isFetching = (state) => state.requestStatus.isFetching;
+export const didComplete = (state) => state.requestStatus.didComplete;
 export const invalidRequest = (state) => state.requestStatus.invalidRequest;
 export const errorMessage = (state) => state.requestStatus.errorMessage;

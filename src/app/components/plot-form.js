@@ -6,7 +6,7 @@ import {Form, withFormik} from 'formik';
 import * as Yup from 'yup';
 
 import * as actions from '../actions';
-import * as plotForm from '../reducers/plot-form';
+import * as fromReducers from '../reducers';
 
 import {Column, ContainerPanel, PlotContainer, Row} from './structure';
 import {Input, MySlider, Switch} from './form-elements';
@@ -146,10 +146,10 @@ PlotForm = withFormik({
 const mapStateToPlotFormProps = (state) => {
     return {
         redux: {
-            plotForm: plotForm.getPlotForm(state.app.plotForm),
-            isFetching: plotForm.isFetching(state.app.plotForm),
-            isInvalid: plotForm.invalidRequest(state.app.plotForm),
-            errorMessage: plotForm.errorMessage(state.app.plotForm)
+            plotForm: fromReducers.getPlotForm(state),
+            isFetching: fromReducers.isFetchingPlotForm(state),
+            isInvalid: fromReducers.plotFormInvalidRequest(state),
+            errorMessage: fromReducers.plotFormErrorMessage(state)
         }
     };
 };

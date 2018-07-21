@@ -1,16 +1,32 @@
 import {combineReducers} from 'redux';
 
-const requestStatuses = (check, {request, success, failure, invalid = null}) => {
+const requestStatuses = (check, {REQUEST, SUCCESS, FAILURE, INVALID = null, RESET = null}) => {
+    const didComplete = (state = false, action) => {
+        if (typeof check === 'function' && check(action)) {
+            return state;
+        }
+        switch (action.type) {
+            case SUCCESS:
+                return true;
+            case REQUEST:
+            case FAILURE:
+            case INVALID:
+            case RESET:
+                return false;
+            default:
+                return state;
+        }
+    };
     const isFetching = (state = false, action) => {
         if (typeof check === 'function' && check(action)) {
             return state;
         }
         switch (action.type) {
-            case request:
+            case REQUEST:
                 return true;
-            case success:
-            case failure:
-            case invalid:
+            case SUCCESS:
+            case FAILURE:
+            case INVALID:
                 return false;
             default:
                 return state;
@@ -18,11 +34,11 @@ const requestStatuses = (check, {request, success, failure, invalid = null}) => 
     };
     const invalidRequest = (state = null, action) => {
         switch (action.type) {
-            case invalid:
+            case INVALID:
                 return action.message;
-            case request:
-            case success:
-            case failure:
+            case REQUEST:
+            case SUCCESS:
+            case FAILURE:
                 return null;
             default:
                 return state;
@@ -33,20 +49,20 @@ const requestStatuses = (check, {request, success, failure, invalid = null}) => 
             return state;
         }
         switch (action.type) {
-            case failure:
+            case FAILURE:
                 return action.message;
-            case request:
-            case success:
-            case invalid:
+            case REQUEST:
+            case SUCCESS:
+            case INVALID:
                 return null;
             default:
                 return state;
         }
     };
-    if (invalid !== null) {
-        return combineReducers({isFetching, errorMessage, invalidRequest});
+    if (INVALID !== null) {
+        return combineReducers({isFetching, didComplete, errorMessage, invalidRequest});
     } else {
-        return combineReducers({isFetching, errorMessage});
+        return combineReducers({isFetching, didComplete, errorMessage});
     }
 };
 

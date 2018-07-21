@@ -5,20 +5,14 @@ import * as types from '../actions/types';
 const page = () => {
     const data = (state = {}, action) => {
         switch (action.type) {
-            case types.PAGE_SUCCESS:
+            case types.PAGE_FETCH.SUCCESS:
                 return action.response;
             default:
                 return state;
         }
     };
 
-    const requestTypes = {
-        request: types.PAGE_REQUEST,
-        success: types.PAGE_SUCCESS,
-        invalid: types.PAGE_INVALID,
-        failure: types.PAGE_FAILURE
-    };
-    const requestStatus = requestStatuses(undefined, requestTypes);
+    const requestStatus = requestStatuses(undefined, types.PAGE_FETCH);
 
     return combineReducers({
         data,

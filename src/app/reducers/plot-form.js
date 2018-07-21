@@ -5,7 +5,7 @@ import * as types from '../actions/types';
 const plotForm = () => {
     const data = (state = {}, action) => {
         switch (action.type) {
-            case types.CONTACT_SUCCESS:
+            case types.PLOT_FETCH.SUCCESS:
                 return action.response;
             case types.CONTACT_RESET:
                 return {};
@@ -14,13 +14,7 @@ const plotForm = () => {
         }
     };
 
-    const requestTypes = {
-        request: types.CONTACT_REQUEST,
-        success: types.CONTACT_SUCCESS,
-        invalid: types.CONTACT_INVALID,
-        failure: types.CONTACT_FAILURE
-    };
-    const requestStatus = requestStatuses(undefined, requestTypes);
+    const requestStatus = requestStatuses(undefined, types.PLOT_FETCH);
 
     return combineReducers({
         data,

@@ -4,7 +4,7 @@ import {Input, MySlider, Select, Switch, TextArea} from './form-elements';
 import {Form, withFormik} from 'formik';
 import {connect} from 'react-redux';
 import * as actions from '../actions';
-import * as contactForm from '../reducers/contact-form';
+import * as fromReducers from '../reducers';
 import * as Yup from 'yup';
 
 let ContactForm = ({
@@ -19,7 +19,7 @@ let ContactForm = ({
                        setFieldValue,
                        setFieldTouched
                    }) => {
-    if (redux.contactForm.sent) {
+    if (redux.didComplete) {
         return <p>Thank you for your message</p>;
     }
     return (
@@ -85,13 +85,17 @@ let ContactForm = ({
 ContactForm = withFormik({
     handleSubmit: (
         values,
-        {setSubmitting, resetForm, props: {postContactForm}}
+        {setSubmitting, resetForm, props: {postContactForm, resetContactForm}}
     ) => {
+        console.log('values', values);
         delete values.redux;
         console.log('values', values);
         postContactForm(values).then(() => {
             setSubmitting(false);
             resetForm();
+        }).then(() => {
+            console.log('reset form here');
+            resetContactForm();
         });
     },
     validationSchema: Yup.object().shape({
@@ -116,10 +120,11 @@ ContactForm = withFormik({
 const mapStateToContactFormProps = (state) => {
     return {
         redux: {
-            contactForm: contactForm.getContactForm(state.app.contactForm),
-            isFetching: contactForm.isFetching(state.app.contactForm),
-            isInvalid: contactForm.invalidRequest(state.app.contactForm),
-            errorMessage: contactForm.errorMessage(state.app.contactForm)
+            contactForm: fromReducers.getContactForm(state),
+            isFetching: fromReducers.isFetchingContactForm(state),
+            didComplete: fromReducers.didCompleteContactForm(state),
+            isInvalid: fromReducers.contactFormInvalidRequest(state),
+            errorMessage: fromReducers.contactFormErrorMessage(state)
         }
     };
 };
