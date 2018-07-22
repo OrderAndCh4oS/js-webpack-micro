@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import {NavLink, Route, Switch} from 'react-router-dom';
 import {Column, Container, Row} from './structure';
@@ -7,12 +8,14 @@ import {Title} from './typography';
 import PlotPage from './plot-page';
 import LoginPage from './login-page';
 import {userIsAuthenticated, userIsNotAuthenticated} from '../authentication';
+import {connect} from 'react-redux';
+import {CREDENTIALS_LOGOUT} from '../actions/types';
 
 const isActiveFunc = (match) => {
     return match;
 };
 
-const Links = () => (
+let Links = ({loggedIn, logout}) => (
     <nav className="main-nav">
         <NavLink exact isActive={isActiveFunc} activeClassName="active" to="/">Home</NavLink>
         {' '}
@@ -23,8 +26,22 @@ const Links = () => (
         <NavLink strict isActive={isActiveFunc} activeClassName="active" to="/contact-us">Contact Us</NavLink>
         {' '}
         <NavLink strict isActive={isActiveFunc} activeClassName="active" to="/plot">Plot</NavLink>
+        {loggedIn !== null ? <button onClick={logout}>Logout</button> : null}
     </nav>
 );
+
+Links = connect(
+    state => {
+        return {
+            loggedIn: state.app.auth.data.token
+        };
+    },
+    dispatch => {
+        return {
+            logout: () => dispatch({type: CREDENTIALS_LOGOUT})
+        };
+    }
+)(Links);
 
 const App = () => (
     <div className="page-wrapper">

@@ -21,12 +21,17 @@ canvas {
   margin-top: 14px;
   margin-right: -$half-column-gutter;
   float: right;
-  a {
+  a, button {
     font-size: $font-two;
+    font-weight: normal;
     margin-right: remCalc(16);
     color: $grey;
     text-transform: uppercase;
     letter-spacing: 2px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
     &:hover {
       color: $dark-grey;
     }

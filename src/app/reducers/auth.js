@@ -7,6 +7,8 @@ const auth = () => {
         switch (action.type) {
             case types.CREDENTIALS_FETCH.SUCCESS:
                 return action.response;
+            case types.CREDENTIALS_LOGOUT:
+                return {token: null};
             default:
                 return state;
         }
