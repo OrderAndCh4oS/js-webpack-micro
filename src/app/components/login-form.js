@@ -49,10 +49,12 @@ LoginForm = withFormik({
     ) => {
         delete values.redux;
         postCredentials(values).then((response) => {
-            setSubmitting(false);
-            resetForm();
-            if (response.hasOwnProperty('error')) {
-                setErrors({general: response.error});
+            if (!response.hasOwnProperty('data')) {
+                setSubmitting(false);
+                resetForm();
+                if (response.hasOwnProperty('error')) {
+                    setErrors({general: response.error});
+                }
             }
         });
     },
