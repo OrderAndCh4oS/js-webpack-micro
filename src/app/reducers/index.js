@@ -37,4 +37,3 @@ export const isFetchingContactForm = (state) => fromContactForm.isFetching(state
 export const didCompleteContactForm = (state) => fromContactForm.didComplete(state.app.contactForm);
 export const contactFormErrorMessage = (state) => fromPages.errorMessage(state.app.contactForm);
 export const contactFormInvalidRequest = (state) => fromPages.invalidRequest(state.app.contactForm);
-
