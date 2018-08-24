@@ -20,6 +20,7 @@ module.exports = {
         'no-class-assign': 2,
         'no-unused-vars': 'warn',
         'react/forbid-prop-types': 'off',
+        'react/prop-types': 'off',
         'indent': [
             'error',
             4,

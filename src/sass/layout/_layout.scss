@@ -41,6 +41,20 @@ canvas {
   }
 }
 
+.map {
+  min-height: 250px;
+  height: 66vh;
+  margin-bottom: $column-gutter * 2;
+}
+
+.carousel {
+  margin-bottom: $column-gutter * 2;
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
 .plot-container {
   position: relative;
 }
