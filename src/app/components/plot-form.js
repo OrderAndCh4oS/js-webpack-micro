@@ -8,8 +8,8 @@ import * as Yup from 'yup';
 import * as actions from '../actions';
 import * as fromReducers from '../reducers';
 
-import {Column, ContainerPanel, PlotContainer, Row} from './structure';
-import {Input, MySlider, Switch} from './form-elements';
+import {Column, ContainerPanel, PlotContainer, Row} from './elements/structure';
+import {Input, MySlider, Switch} from './elements/form';
 
 let PlotForm = ({
                     values,

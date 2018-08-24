@@ -6,8 +6,8 @@ import {connect} from 'react-redux';
 import * as actions from '../actions/index';
 import * as fromReducers from '../reducers';
 
-import {Column} from './structure';
-import {IntroText, Pretitle, Text, Title} from './typography';
+import {Column} from './elements/structure';
+import {IntroText, Pretitle, Text, Title} from './elements/typography';
 import ErrorMessage from './error-message';
 
 class Page extends Component {

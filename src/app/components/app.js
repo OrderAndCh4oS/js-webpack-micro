@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import {NavLink, Route, Switch} from 'react-router-dom';
-import {Column, Container, Row} from './structure';
+import {Column, Container, Row} from './elements/structure';
 import CurrentPage from './page';
 import ContactPage from './contact-page';
-import {Title} from './typography';
+import {Title} from './elements/typography';
 import PlotPage from './plot-page';
 import LoginPage from './login-page';
 import {userIsAuthenticated, userIsNotAuthenticated} from '../authentication';

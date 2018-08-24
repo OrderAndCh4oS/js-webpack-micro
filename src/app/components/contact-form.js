@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types,indent */
 import React from 'react';
-import {Input, MySlider, Select, Switch, TextArea} from './form-elements';
+import {Input, MySlider, Select, Switch, TextArea} from './elements/form';
 import {Form, withFormik} from 'formik';
 import {connect} from 'react-redux';
 import * as actions from '../actions';

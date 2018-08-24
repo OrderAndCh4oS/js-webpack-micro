@@ -1,27 +1,28 @@
 /* eslint-disable react/prop-types,indent */
 import React from 'react';
 
-export const Container = ({classes = [], children}) =>
-    <div className={['container', ...classes].join(' ')}>{children}</div>;
+export const Container = ({className = '', children, ...rest}) =>
+    <div className={'container ' + className} {...rest}>{children}</div>;
 
-export const ContainerPanel = ({classes = [], children}) =>
-    <Container>
-        <div className={['panel', ...classes].join(' ')}>
+export const ContainerPanel = ({className = '', children, ...rest}) =>
+    <Container {...rest}>
+        <div className={'panel ' + className}>
             {children}
         </div>
     </Container>;
 
-export const Row = ({children}) => <div className={'row'}>{children}</div>;
+export const Row = ({className = '', children, ...rest}) =>
+    <div className={'row ' + className} {...rest}>{children}</div>;
 
-export const Column = ({span = 12, push = false, classes = [], children}) => {
-    classes = [
+export const Column = ({span = 12, push = false, className = '', children, ...rest}) => {
+    const classes = [
         'column',
         'col-' + span,
         push ? ' push-' + push : '',
-        ...classes
+        className
     ].join(' ');
     return (
-        <div className={classes}>
+        <div className={classes} {...rest}>
             <div>
                 {children}
             </div>
@@ -29,8 +30,8 @@ export const Column = ({span = 12, push = false, classes = [], children}) => {
     );
 };
 
-export const Table = ({headers = [], rows = [], classes = []}) =>
-    <table className={classes.join(' ')}>
+export const Table = ({headers = [], rows = [], className = '', ...rest}) =>
+    <table className={'table ' + className}  {...rest}>
         <thead>
         <tr>
             {headers.map((header, index) => <th key={index}>{header}</th>)}
