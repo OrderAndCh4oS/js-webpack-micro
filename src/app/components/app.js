@@ -10,6 +10,7 @@ import LoginPage from './login-page';
 import {userIsAuthenticated, userIsNotAuthenticated} from '../authentication';
 import {connect} from 'react-redux';
 import {CREDENTIALS_LOGOUT} from '../actions/types';
+import HomePage from './home-page';
 
 const isActiveFunc = (match) => {
     return match;
@@ -58,10 +59,11 @@ const App = () => (
             </Container>
             <Container>
                 <Switch>
+                    <Route exact path="/" component={userIsNotAuthenticated(HomePage)}/>
                     <Route exact path="/login" component={userIsNotAuthenticated(LoginPage)}/>
                     <Route exact path="/plot" component={userIsAuthenticated(PlotPage)}/>
-                    <Route exact path="/contact-us" component={userIsAuthenticated(ContactPage)}/>
-                    <Route exact path="/:page?" component={userIsAuthenticated(CurrentPage)}/>
+                    <Route exact path="/contact-us" component={userIsNotAuthenticated(ContactPage)}/>
+                    <Route exact path="/:page?" component={userIsNotAuthenticated(CurrentPage)}/>
                 </Switch>
             </Container>
         </div>
