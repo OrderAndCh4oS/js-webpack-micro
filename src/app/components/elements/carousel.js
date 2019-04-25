@@ -1,7 +1,7 @@
 import React from 'react';
-import {Carousel} from 'react-responsive-carousel';
+import { Carousel } from 'react-responsive-carousel';
 
-const CarouselPanel = ({className, children}) =>
+const CarouselPanel = ({className = '', children}) =>
     <Carousel
         className={'carousel ' + className}
         showStatus={false}

@@ -1,15 +1,15 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import {NavLink, Route, Switch} from 'react-router-dom';
-import {Column, Container, Row} from './elements/structure';
+import { NavLink, Route, Switch } from 'react-router-dom';
+import { Column, Container, Row } from './elements/structure';
 import CurrentPage from './page';
 import ContactPage from './contact-page';
-import {Title} from './elements/typography';
+import { Title } from './elements/typography';
 import PlotPage from './plot-page';
 import LoginPage from './login-page';
-import {userIsAuthenticated, userIsNotAuthenticated} from '../authentication';
-import {connect} from 'react-redux';
-import {CREDENTIALS_LOGOUT} from '../actions/types';
+import { userIsNotAuthenticated } from '../authentication';
+import { connect } from 'react-redux';
+import { CREDENTIALS_LOGOUT } from '../actions/types';
 import HomePage from './home-page';
 
 const isActiveFunc = (match) => {
@@ -61,7 +61,11 @@ const App = () => (
                 <Switch>
                     <Route exact path="/" component={userIsNotAuthenticated(HomePage)}/>
                     <Route exact path="/login" component={userIsNotAuthenticated(LoginPage)}/>
-                    <Route exact path="/plot" component={userIsAuthenticated(PlotPage)}/>
+                    <Route
+                        exact
+                        path="/plot"
+                        component={userIsNotAuthenticated(PlotPage)}
+                    />
                     <Route exact path="/contact-us" component={userIsNotAuthenticated(ContactPage)}/>
                     <Route exact path="/:page?" component={userIsNotAuthenticated(CurrentPage)}/>
                 </Switch>

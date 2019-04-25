@@ -1,14 +1,13 @@
 /* eslint-disable react/prop-types,indent */
 import React from 'react';
-import {FormError, Input} from './elements/form';
-import {Form, withFormik} from 'formik';
-import {connect} from 'react-redux';
+import { FormError, Input } from './elements/form';
+import { Form, withFormik } from 'formik';
+import { connect } from 'react-redux';
 import * as actions from '../actions';
 import * as fromReducers from '../reducers';
 import * as Yup from 'yup';
 
 let LoginForm = ({
-                     redux,
                      values,
                      errors,
                      touched,

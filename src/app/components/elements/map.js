@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import marker from '../../images/marker.png';
@@ -9,7 +9,8 @@ class Map extends Component {
             attributionControl: false
         }).setView([52.05917, 1.15545], 8.8);
         L.tileLayer(
-            'https://api.mapbox.com/styles/v1/sean-kl/cjl7y6m3524m32snyjh0ld4d7/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoic2Vhbi1rbCIsImEiOiJjamMyMXZld2swZTRrMzNvZGl5cTVkNDVkIn0.5tL5SmBAcluWAFhqJyjWfw', {
+            'https://api.mapbox.com/styles/v1/sean-kl/cjuwbz4sy273e1fqo5qiuged0/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoic2Vhbi1rbCIsImEiOiJjamMyMXZld2swZTRrMzNvZGl5cTVkNDVkIn0.5tL5SmBAcluWAFhqJyjWfw',
+            {
                 tileSize: 512,
                 zoomOffset: -1
             }).addTo(this.map);
